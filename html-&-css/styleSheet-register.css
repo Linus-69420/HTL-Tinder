@@ -119,3 +119,19 @@ footer {
   padding: 1em;
   text-align: center;
 }
+
+input[type="password"] {
+  /* ... */
+  border-color: #ccc;
+}
+
+input[type="password"].error {
+  border-color: #f00;
+}
+
+.error-message {
+  color: #f00;
+  font-size: 0.8em;
+  margin-top: 0.5em;
+}
+
