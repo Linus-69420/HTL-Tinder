@@ -34,13 +34,16 @@ export class UserSevice {
         this.users.push(user);
     }
 
-    deleteUser(id : number) : void {
+    deleteUser(id : number) : boolean {
         let user = this.users.find(u => u.id == id);
         if(user !== undefined){
             this.users.forEach( (item, index) => {
                 if(item === user) this.users.splice(index,1);
                 });
+            return true;
         }
+
+        return false;
     }
 
     updateUser(user : IUser) : void {
