@@ -15,6 +15,13 @@ export class UserSevice {
             age: 17,
             gender: "female",
             email: "Bajtik@htl.at",
+        },
+        {
+            id: 3,
+            name: "Oliver",
+            age: 17,
+            gender: "male",
+            email: "Oliver@htl.at",
         }
     ];
 

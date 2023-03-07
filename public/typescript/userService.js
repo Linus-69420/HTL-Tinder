@@ -16,6 +16,13 @@ var UserSevice = /** @class */ (function () {
                 age: 17,
                 gender: "female",
                 email: "Bajtik@htl.at"
+            },
+            {
+                id: 3,
+                name: "Oliver",
+                age: 17,
+                gender: "male",
+                email: "Oliver@htl.at"
             }
         ];
         this.userCount = 2;

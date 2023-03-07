@@ -36,40 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-// Suchformular
 getUsers();
-/*const searchForm = document.querySelector('#search-form') as HTMLFormElement;
-const searchInput = document.querySelector('#search-input') as HTMLInputElement;
-const searchResults = document.querySelector('#search-results') as HTMLElement;
-
-searchForm.addEventListener('submit', async (event) => {
-  event.preventDefault();
-
-  // Rufen Sie die Benutzerliste vom Server ab
-  const response = await fetch('/users');
-  const users = await response.json();
-
-  // Suchen Sie nach Benutzern, die dem Suchkriterium entsprechen
-  const searchTerm = searchInput.value.toLowerCase();
-  const matchingUsers = users.filter((user: any) => {
-    const fullName = `${user.firstName} ${user.lastName}`.toLowerCase();
-    return fullName.includes(searchTerm);
-  });
-
-  // Löschen Sie zuvor angezeigte Suchergebnisse
-  searchResults.innerHTML = '';
-
-  // Zeigen Sie die Ergebnisse an
-  matchingUsers.forEach((user: any) => {
-    const userCard = document.createElement('div');
-    userCard.classList.add('user-card');
-    userCard.innerHTML = `
-      <h2>${user.firstName} ${user.lastName}</h2>
-      <p>${user.email}</p>
-    `;
-    searchResults.appendChild(userCard);
-  });
-});*/
 function getUsers() {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
@@ -77,7 +44,6 @@ function getUsers() {
                 case 0: return [4 /*yield*/, fetch("http://localhost:3000/all", {})
                         .then(function (response) { return response.json(); })
                         .then(function (data) {
-                        //console.log(data);
                         createList(data);
                     })];
                 case 1:
@@ -88,10 +54,11 @@ function getUsers() {
     });
 }
 function createList(users) {
-    console.log(users.toString());
     users.forEach(function (u) {
         console.log(u);
+        var test = document.createElement("h3");
+        test.textContent = u.name;
+        var search = document.getElementById("search-results");
+        search === null || search === void 0 ? void 0 : search.appendChild(test);
     });
-    var test = document.createElement("p");
-    test.textContent = "Hallo!";
 }
