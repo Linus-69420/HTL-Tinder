@@ -2,6 +2,10 @@ import { UserSevice } from "./userService";
 
 const userService = new UserSevice();
 
+const form = document.getElementById("search-form");
+form?.addEventListener("submit", (event) => {
+  event.preventDefault();
+
 const searchResults = document.getElementById("search-results")!;
   searchResults.innerHTML = "";
 
@@ -16,3 +20,4 @@ const ul = document.createElement("ul");
       ul.appendChild(li);
     }
     searchResults.appendChild(ul);
+});
