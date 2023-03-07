@@ -62,11 +62,13 @@ nav a:hover {
 }
 
 .hero h1 {
+  color:#000000;
   font-size: 48px;
   margin-bottom: 20px;
 }
 
 .hero p {
+  color:#000000;
   font-size: 24px;
   margin-bottom: 30px;
 }
@@ -74,7 +76,7 @@ nav a:hover {
 .cta {
   display: inline-block;
   padding: 20px 50px;
-  background-color: #6c63ff;
+  background-color: #ff0088;
   color: #ffffff;
   border-radius: 5px;
   text-transform: uppercase;
@@ -83,7 +85,7 @@ nav a:hover {
 }
 
 .cta:hover {
-  background-color: #524adc;
+  background-color: #74003e;
 }
 
 /* Features */
@@ -92,7 +94,7 @@ nav a:hover {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #ffffff;
+  background-color: #ff0088;
   padding: 50px;
 }
 
