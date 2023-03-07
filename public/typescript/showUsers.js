@@ -54,11 +54,28 @@ function getUsers() {
     });
 }
 function createList(users) {
-    users.forEach(function (u) {
-        console.log(u);
-        var test = document.createElement("h3");
-        test.textContent = u.name + " email:" + u.email;
-        var search = document.getElementById("search-results");
-        search === null || search === void 0 ? void 0 : search.appendChild(test);
-    });
+    var searchResults = document.getElementById("search-results");
+    searchResults.innerHTML = "";
+    if (users.length > 0) {
+        var ul = document.createElement("ul");
+        for (var _i = 0, users_1 = users; _i < users_1.length; _i++) {
+            var user = users_1[_i];
+            var li = document.createElement("li");
+            li.textContent = user.name;
+            ul.appendChild(li);
+        }
+        searchResults.appendChild(ul);
+    }
+    else {
+        var p = document.createElement("p");
+        p.textContent = "Keine Benutzer gefunden.";
+        searchResults.appendChild(p);
+    }
+    /*users.forEach(u => {
+      console.log(u);
+      const test = document.createElement("h3");
+      test.textContent = u.name + " email:" + u.email + "\n";
+      const search = document.getElementById("search-results");
+      search?.appendChild(test);
+    })*/
 }
