@@ -2,9 +2,13 @@ import express, { response } from "express";
 import { join } from "path";
 import { IUser } from "./user";
 import { UserSevice } from "./userService";
+var bodyParser = require('body-parser')
+
+let userService = new UserSevice();
 
 const app = express();
-let userService = new UserSevice();
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 app.get("/", (request, response) => {
     const file: string = join(__dirname, "/public/html/index.html");
@@ -30,15 +34,22 @@ app.get("/id:id", (request, response) => {
 });
 
 app.post("/new", (request, response) => {
-    console.log("jex");
-    userService.addUser(JSON.parse(request.body));
+    if(request.body.id !== undefined){
+        return response.send("Fehler beim Einfügen");
+    }
+    userService.addUser(request.body);
+    return response.send("Erfolgreich eingefügt");
 });
 
-app.put("/update:user", (request, response) => {
-    userService.updateUser(JSON.parse(request.params.user));
+app.put("/update", (request, response) => {
+    if(request.body.id === undefined){
+        return response.send("Fehler beim updaten");
+    }
+    userService.updateUser(request.body);
+    return response.send("Erfolgreich geupdated");
 });
 
-app.get("/delete:id", (request, response) => {
+app.delete("/delete:id", (request, response) => {
     if(userService.deleteUser(1/*Number(request.params.id)*/)){
         return response.send("User mit der id: " + request.params.id + " gelöscht");
     }
@@ -48,3 +59,5 @@ app.get("/delete:id", (request, response) => {
 app.listen(3000, () => {
     console.log("Server listening on port 3000");
 });
+
+
