@@ -1,7 +1,3 @@
-"use strict";
-exports.__esModule = true;
-var userService_1 = require("./userService");
-var userService = new userService_1.UserSevice();
 // Suchformular
 var form = document.getElementById("search-form");
 form === null || form === void 0 ? void 0 : form.addEventListener("submit", function (event) {
@@ -14,11 +10,13 @@ form === null || form === void 0 ? void 0 : form.addEventListener("submit", func
     // Benutzer suchen
     //const users = userService.searchUsers(searchTerm);
     //const users = userService.getUserById(searchTerm);
-    var users = userService.getAllUsers();
+    fetch("http://localhost:3000/all")
+        .then(function (response) { return response.json(); })
+        .then(function (data) { return console.log(data); });
     var test = document.createElement("p");
     test.textContent = "Hallo!";
     // Benutzerliste aufbauen
-    if (users.length > 0) {
+    /*if (users.length > 0) {
         var ul = document.createElement("ul");
         for (var _i = 0, users_1 = users; _i < users_1.length; _i++) {
             var user = users_1[_i];
@@ -32,7 +30,7 @@ form === null || form === void 0 ? void 0 : form.addEventListener("submit", func
         var p = document.createElement("p");
         p.textContent = "Keine Benutzer gefunden.";
         searchResults.appendChild(p);
-    }
+    }*/
 });
 /*const searchForm = document.querySelector('#search-form') as HTMLFormElement;
 const searchInput = document.querySelector('#search-input') as HTMLInputElement;

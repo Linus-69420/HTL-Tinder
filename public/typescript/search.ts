@@ -1,6 +1,3 @@
-import { UserSevice } from "./userService";
-
-const userService = new UserSevice();
 
 // Suchformular
 const form = document.getElementById("search-form");
@@ -17,11 +14,14 @@ form?.addEventListener("submit", (event) => {
   // Benutzer suchen
   //const users = userService.searchUsers(searchTerm);
   //const users = userService.getUserById(searchTerm);
-  const users = userService.getAllUsers();
+  fetch("http://localhost:3000/all")
+  .then((response) => response.json())
+  .then((data) => console.log(data));
 
   const test = document.createElement("p");
   test.textContent = "Hallo!";
 
+  let users;
   // Benutzerliste aufbauen
   if (users.length > 0) {
     const ul = document.createElement("ul");
@@ -70,4 +70,3 @@ searchForm.addEventListener('submit', async (event) => {
     searchResults.appendChild(userCard);
   });
 });*/
-
