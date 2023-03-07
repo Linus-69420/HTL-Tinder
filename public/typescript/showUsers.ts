@@ -15,7 +15,7 @@ function createList(users){
   users.forEach(u => {
     console.log(u);
     const test = document.createElement("h3");
-    test.textContent = u.name;
+    test.textContent = u.name + " email:" + u.email + "\n";
     const search = document.getElementById("search-results");
     search?.appendChild(test);
   })

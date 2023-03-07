@@ -57,7 +57,7 @@ function createList(users) {
     users.forEach(function (u) {
         console.log(u);
         var test = document.createElement("h3");
-        test.textContent = u.name;
+        test.textContent = u.name + " email:" + u.email;
         var search = document.getElementById("search-results");
         search === null || search === void 0 ? void 0 : search.appendChild(test);
     });
