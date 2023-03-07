@@ -18,6 +18,12 @@ export class UserSevice {
         }
     ];
 
+searchUsers(searchTerm: string): IUser[] {
+  const lowerCaseSearchTerm = searchTerm.toLowerCase();
+  return this.users.filter((user) =>
+    user.name.toLowerCase().includes(lowerCaseSearchTerm)
+  );
+}
     userCount : number = 2;
 
     getAllUsers() : IUser[] {
