@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.get("/", (request, response) => {
-    const file: string = join(__dirname, "/public/html/index.html");
+    const file: string = join(__dirname, "/../html/index.html");
     response.sendFile(file);
 });
 
