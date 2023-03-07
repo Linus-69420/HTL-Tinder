@@ -36,6 +36,9 @@ app.get("/id:id", (request, response) => {
 });
 
 app.post("/new", (request, response) => {
+    console.log(request);
+    console.log(response);
+    console.log(request.body);
     if(request.body.id !== undefined){
         return response.send("Fehler beim Einfügen");
     }

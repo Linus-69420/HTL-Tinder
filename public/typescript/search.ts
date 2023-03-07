@@ -1,49 +1,9 @@
+import { response } from "express";
 import {IUser} from "./user";
 
 // Suchformular
-let form = document.getElementById("search-form");
-form?.addEventListener("submit", (event) => {
-  event.preventDefault();
 
-  // Suchbegriff aus dem Formular lesen
-  const searchTerm = (document.getElementById("search-input") as HTMLInputElement).value;
-
-  // Benutzerliste zurücksetzen
-  const searchResults = document.getElementById("search-results")!;
-  searchResults.innerHTML = "";
-
-  // Benutzer suchen
-  let users : IUser[] = [];
-  fetch("http://localhost:3000/all",{})
-  .then((response) => response.json())
-  .then((data) => {
-    users = JSON.parse(data);
-  });
-
-  console.log(users);
-
-  users.forEach(u => {
-    console.log(u);
-  })
-
-  const test = document.createElement("p");
-  test.textContent = "Hallo!";
-
-  // Benutzerliste aufbauen
-  if (users.length > 0) {
-    const ul = document.createElement("ul");
-    for (const user of users) {
-      const li = document.createElement("li");
-      li.textContent = user.name;
-      ul.appendChild(li);
-    }
-    searchResults.appendChild(ul);
-  } else {
-    const p = document.createElement("p");
-    p.textContent = "Keine Benutzer gefunden.";
-    searchResults.appendChild(p);
-  }
-});
+getUsers();
 
 /*const searchForm = document.querySelector('#search-form') as HTMLFormElement;
 const searchInput = document.querySelector('#search-input') as HTMLInputElement;
@@ -77,3 +37,23 @@ searchForm.addEventListener('submit', async (event) => {
     searchResults.appendChild(userCard);
   });
 });*/
+
+
+async function getUsers(){
+  await fetch("http://localhost:3000/all",{})
+  .then((response) => response.json())
+  .then((data) => {
+    //console.log(data);
+    createList(data);
+  });
+}
+
+function createList(users){
+
+  users.forEach(u => {
+    console.log(u);
+  })
+
+  const test = document.createElement("p");
+  test.textContent = "Hallo!";
+}
