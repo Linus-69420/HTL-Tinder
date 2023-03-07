@@ -18,6 +18,13 @@ users : IUser[] = [{
     }
 ];
 
+searchUsers(searchTerm: string): IUser[] {
+  const lowerCaseSearchTerm = searchTerm.toLowerCase();
+  return this.users.filter((user) =>
+    user.name.toLowerCase().includes(lowerCaseSearchTerm)
+  );
+}
+
 getAllUsers() : IUser[] {
     return this.users;
 }
