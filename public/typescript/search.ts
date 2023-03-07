@@ -1,6 +1,7 @@
+import {IUser} from "./user";
 
 // Suchformular
-const form = document.getElementById("search-form");
+let form = document.getElementById("search-form");
 form?.addEventListener("submit", (event) => {
   event.preventDefault();
 
@@ -12,16 +13,22 @@ form?.addEventListener("submit", (event) => {
   searchResults.innerHTML = "";
 
   // Benutzer suchen
-  //const users = userService.searchUsers(searchTerm);
-  //const users = userService.getUserById(searchTerm);
-  fetch("http://localhost:3000/all")
+  let users : IUser[] = [];
+  fetch("http://localhost:3000/all",{})
   .then((response) => response.json())
-  .then((data) => console.log(data));
+  .then((data) => {
+    users = JSON.parse(data);
+  });
+
+  console.log(users);
+
+  users.forEach(u => {
+    console.log(u);
+  })
 
   const test = document.createElement("p");
   test.textContent = "Hallo!";
 
-  let users;
   // Benutzerliste aufbauen
   if (users.length > 0) {
     const ul = document.createElement("ul");

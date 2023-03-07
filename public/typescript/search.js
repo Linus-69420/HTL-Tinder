@@ -1,3 +1,5 @@
+"use strict";
+exports.__esModule = true;
 // Suchformular
 var form = document.getElementById("search-form");
 form === null || form === void 0 ? void 0 : form.addEventListener("submit", function (event) {
@@ -8,15 +10,20 @@ form === null || form === void 0 ? void 0 : form.addEventListener("submit", func
     var searchResults = document.getElementById("search-results");
     searchResults.innerHTML = "";
     // Benutzer suchen
-    //const users = userService.searchUsers(searchTerm);
-    //const users = userService.getUserById(searchTerm);
-    fetch("http://localhost:3000/all")
+    var users = [];
+    fetch("http://localhost:3000/all", {})
         .then(function (response) { return response.json(); })
-        .then(function (data) { return console.log(data); });
+        .then(function (data) {
+        users = JSON.parse(data);
+    });
+    console.log(users);
+    users.forEach(function (u) {
+        console.log(u);
+    });
     var test = document.createElement("p");
     test.textContent = "Hallo!";
     // Benutzerliste aufbauen
-    /*if (users.length > 0) {
+    if (users.length > 0) {
         var ul = document.createElement("ul");
         for (var _i = 0, users_1 = users; _i < users_1.length; _i++) {
             var user = users_1[_i];
@@ -30,7 +37,7 @@ form === null || form === void 0 ? void 0 : form.addEventListener("submit", func
         var p = document.createElement("p");
         p.textContent = "Keine Benutzer gefunden.";
         searchResults.appendChild(p);
-    }*/
+    }
 });
 /*const searchForm = document.querySelector('#search-form') as HTMLFormElement;
 const searchInput = document.querySelector('#search-input') as HTMLInputElement;
