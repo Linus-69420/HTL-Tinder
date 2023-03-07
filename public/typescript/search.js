@@ -1,7 +1,5 @@
 "use strict";
 exports.__esModule = true;
-var userService_1 = require("./userService");
-var userService = new userService_1.UserSevice();
 // Suchformular
 var form = document.getElementById("search-form");
 form === null || form === void 0 ? void 0 : form.addEventListener("submit", function (event) {
@@ -12,9 +10,16 @@ form === null || form === void 0 ? void 0 : form.addEventListener("submit", func
     var searchResults = document.getElementById("search-results");
     searchResults.innerHTML = "";
     // Benutzer suchen
-    //const users = userService.searchUsers(searchTerm);
-    //const users = userService.getUserById(searchTerm);
-    var users = userService.getAllUsers();
+    var users = [];
+    fetch("http://localhost:3000/all", {})
+        .then(function (response) { return response.json(); })
+        .then(function (data) {
+        users = JSON.parse(data);
+    });
+    console.log(users);
+    users.forEach(function (u) {
+        console.log(u);
+    });
     var test = document.createElement("p");
     test.textContent = "Hallo!";
     // Benutzerliste aufbauen

@@ -1,9 +1,7 @@
-import { UserSevice } from "./userService";
-
-const userService = new UserSevice();
+import {IUser} from "./user";
 
 // Suchformular
-const form = document.getElementById("search-form");
+let form = document.getElementById("search-form");
 form?.addEventListener("submit", (event) => {
   event.preventDefault();
 
@@ -15,9 +13,18 @@ form?.addEventListener("submit", (event) => {
   searchResults.innerHTML = "";
 
   // Benutzer suchen
-  //const users = userService.searchUsers(searchTerm);
-  //const users = userService.getUserById(searchTerm);
-  const users = userService.getAllUsers();
+  let users : IUser[] = [];
+  fetch("http://localhost:3000/all",{})
+  .then((response) => response.json())
+  .then((data) => {
+    users = JSON.parse(data);
+  });
+
+  console.log(users);
+
+  users.forEach(u => {
+    console.log(u);
+  })
 
   const test = document.createElement("p");
   test.textContent = "Hallo!";
@@ -70,4 +77,3 @@ searchForm.addEventListener('submit', async (event) => {
     searchResults.appendChild(userCard);
   });
 });*/
-

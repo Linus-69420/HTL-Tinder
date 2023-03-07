@@ -2,6 +2,7 @@ import express, { response } from "express";
 import { join } from "path";
 import { IUser } from "./user";
 import { UserSevice } from "./userService";
+import cors from "cors";
 var bodyParser = require('body-parser')
 
 let userService = new UserSevice();
@@ -9,6 +10,7 @@ let userService = new UserSevice();
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+app.use(cors());
 
 app.get("/", (request, response) => {
     const file: string = join(__dirname, "/../html/index.html");
@@ -18,7 +20,8 @@ app.get("/", (request, response) => {
 app.get("/all", (request, response) => {
     let users = userService.getAllUsers();
     if(users !== null){
-        return response.send(JSON.stringify(JSON.stringify(users)));
+        console.log("f");
+        return response.send(JSON.stringify(users));
     }
     return response.send("No users found");
 });
@@ -50,7 +53,7 @@ app.put("/update", (request, response) => {
 });
 
 app.delete("/delete:id", (request, response) => {
-    if(userService.deleteUser(1/*Number(request.params.id)*/)){
+    if(userService.deleteUser(Number(request.params.id))){
         return response.send("User mit der id: " + request.params.id + " gelöscht");
     }
     return response.send("User mit der id: " + request.params.id + " existiert nicht");
