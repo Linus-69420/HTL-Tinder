@@ -29,8 +29,9 @@ app.get("/id:id", (request, response) => {
     return response.send("No user with id"+ request.params.id);
 });
 
-app.post("/new:user", (request, response) => {
-    userService.addUser(JSON.parse(request.params.user));
+app.post("/new", (request, response) => {
+    console.log("jex");
+    userService.addUser(JSON.parse(request.body));
 });
 
 app.put("/update:user", (request, response) => {
