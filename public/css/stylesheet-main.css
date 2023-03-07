@@ -207,7 +207,7 @@ footer {
 
 input[type="text"],
 input[type="email"],
-input[type="password"],
+input[type="age"],
 select[type="gender"] {
   display: block;
   width: 100%;
