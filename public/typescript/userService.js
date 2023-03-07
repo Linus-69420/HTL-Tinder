@@ -5,7 +5,7 @@ var UserSevice = /** @class */ (function () {
     function UserSevice() {
         this.users = [{
                 id: 1,
-                name: "linus",
+                name: "Linus",
                 age: 17,
                 gender: "male",
                 email: "Linus@htl.at"

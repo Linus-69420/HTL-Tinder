@@ -36,7 +36,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-getUsers();
 function getUsers() {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
@@ -54,28 +53,29 @@ function getUsers() {
     });
 }
 function createList(users) {
-    var searchResults = document.getElementById("search-results");
-    searchResults.innerHTML = "";
-    if (users.length > 0) {
-        var ul = document.createElement("ul");
-        for (var _i = 0, users_1 = users; _i < users_1.length; _i++) {
-            var user = users_1[_i];
-            var li = document.createElement("li");
-            li.textContent = user.name;
-            ul.appendChild(li);
+    users.forEach(function (u) {
+        console.log(u);
+        /*const test = document.createElement("h3");
+        test.textContent = u.name + " email:" + u.email + "\n";
+        const list = document.getElementById("search-results")!;
+        
+        list?.appendChild(test);*/
+        var searchResults = document.getElementById("search-results");
+        searchResults.innerHTML = "";
+        if (users.length > 0) {
+            var ul = document.createElement("ul");
+            for (var _i = 0, users_1 = users; _i < users_1.length; _i++) {
+                var user = users_1[_i];
+                var li = document.createElement("li");
+                li.textContent = user.name;
+                ul.appendChild(li);
+            }
+            searchResults.appendChild(ul);
         }
-        searchResults.appendChild(ul);
-    }
-    else {
-        var p = document.createElement("p");
-        p.textContent = "Keine Benutzer gefunden.";
-        searchResults.appendChild(p);
-    }
-    /*users.forEach(u => {
-      console.log(u);
-      const test = document.createElement("h3");
-      test.textContent = u.name + " email:" + u.email + "\n";
-      const search = document.getElementById("search-results");
-      search?.appendChild(test);
-    })*/
+        else {
+            var p = document.createElement("p");
+            p.textContent = "Keine Benutzer gefunden.";
+            searchResults.appendChild(p);
+        }
+    });
 }
