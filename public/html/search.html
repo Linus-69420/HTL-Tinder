@@ -1,9 +1,33 @@
-<!-- Suchfeld -->
-<form id="search-form">
-    <input type="text" id="search-input" placeholder="Benutzer suchen...">
-    <button type="submit">Suchen</button>
-  </form>
-  
-  <!-- Suchergebnisse werden hier angezeigt -->
-  <div id="search-results"></div>
-  
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Benutzer suchen</title>
+    <link rel="stylesheet" href="../css/stylesheet-main.css" />
+  </head>
+  <body>
+    <header class>
+        <nav>
+          <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./search.html">Suche</a></li>
+            <li><a href="#">Profil</a></li>
+            <li><a href="#">Anmelden</a></li>
+          </ul>
+        </nav>
+      </header>
+
+    <main>
+      <h2>Benutzer suchen</h2>
+      <form id="search-form">
+        <label for="search-input">Benutzer suchen:</label>
+        <input type="text" id="search-input" placeholder="Name, Benutzername oder Interessen">
+        <button type="submit">Suchen</button>
+      </form>
+
+      <div id="search-results" class="user-list"></div>
+    </main>
+
+    <footer>
+      <p>&copy; 2023 Dating-Website. Alle Rechte vorbehalten.</p
