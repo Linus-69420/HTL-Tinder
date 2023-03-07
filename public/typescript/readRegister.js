@@ -1,5 +1,5 @@
 "use strict";
-
+exports.__esModule = true;
 /*const form = document.querySelector<HTMLFormElement>("register-form");
 const nameinput = form?.querySelector<HTMLInputElement>('input[name="name"]');
 const emailinput = form?.querySelector<HTMLInputElement>('input[name="email"]');
@@ -30,6 +30,18 @@ function addUser() {
         gender: genderInput.value
     };
     console.log(newUser);
+    fetch("http://localhost:3000/new", {
+        method: "POST",
+        mode: "cors",
+        cache: "no-cache",
+        credentials: "same-origin",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        redirect: "follow",
+        referrerPolicy: "no-referrer",
+        body: JSON.stringify(newUser)
+    });
 }
 var addUserButton = document.getElementById('submit');
 addUserButton.addEventListener('submit', addUser);

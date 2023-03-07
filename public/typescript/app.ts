@@ -20,7 +20,6 @@ app.get("/", (request, response) => {
 app.get("/all", (request, response) => {
     let users = userService.getAllUsers();
     if(users !== null){
-        console.log("f");
         return response.send(JSON.stringify(users));
     }
     return response.send("No users found");
@@ -40,6 +39,7 @@ app.post("/new", (request, response) => {
     if(request.body.id !== undefined){
         return response.send("Fehler beim Einfügen");
     }
+    console.log("e")
     userService.addUser(request.body);
     return response.send("Erfolgreich eingefügt");
 });
