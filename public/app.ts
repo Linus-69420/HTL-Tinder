@@ -1,5 +1,6 @@
 import express, { response } from "express";
 import { join } from "path";
+import { IUser } from "./user";
 import { UserSevice } from "./userService";
 
 const app = express();
@@ -18,8 +19,14 @@ app.get("/all", (request, response) => {
     return response.send("No users found");
 });
 
-app.get("/:id", (request, response) => {
-    return response.send(JSON.stringify(userService.getUserById(Number(request.params.id))));
+app.get("/id:id", (request, response) => {
+    let user = userService.getUserById(Number(request.params.id));
+
+    if(user !== undefined){
+        return response.send(JSON.stringify(user));
+    }
+
+    return response.send("No user with id"+ request.params.id);
 });
 
 app.post("/new:user", (request, response) => {
@@ -30,8 +37,11 @@ app.put("/update:user", (request, response) => {
     userService.updateUser(JSON.parse(request.params.user));
 });
 
-app.delete("/delete:id", (request, response) => {
-    userService.deleteUser(Number(request.params.id));
+app.get("/delete:id", (request, response) => {
+    if(userService.deleteUser(1/*Number(request.params.id)*/)){
+        return response.send("User mit der id: " + request.params.id + " gelöscht");
+    }
+    return response.send("User mit der id: " + request.params.id + " existiert nicht");
 });
 
 app.listen(3000, () => {
