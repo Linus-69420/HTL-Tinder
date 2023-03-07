@@ -10,12 +10,16 @@ app.get("/", (request, response) => {
     response.sendFile(file);
 });
 
-app.get("/:id", (request, response) => {
-    return JSON.stringify(userService.getUserById(Number(request.params.id)));
+app.get("/all", (request, response) => {
+    let users = userService.getAllUsers();
+    if(users !== null){
+        return response.send(JSON.stringify(JSON.stringify(users)));
+    }
+    return response.send("No users found");
 });
 
-app.get("/all", (request, response) => {
-    return JSON.stringify(userService.getAllUsers());
+app.get("/:id", (request, response) => {
+    return response.send(JSON.stringify(userService.getUserById(Number(request.params.id))));
 });
 
 app.post("/new:user", (request, response) => {
