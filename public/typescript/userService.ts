@@ -4,7 +4,7 @@ export class UserSevice {
    
     users : Array<IUser> = [{
             id: 1,
-            name: "linus",
+            name: "Linus",
             age: 17,
             gender: "male",
             email: "Linus@htl.at",
