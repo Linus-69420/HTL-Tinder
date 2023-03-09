@@ -1,0 +1,37 @@
+GET http://localhost:3000/htl/dating HTTP/1.1
+
+###################################################
+
+GET http://localhost:3000/htl/dating/2 HTTP/1.1
+
+###################################################
+
+POST http://localhost:3000/htl/dating HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Abdul",
+    "age": 24,
+    "gender": "male",
+    "email": "abdul@htl.at",
+    "description": "wallah billa"
+}
+
+###################################################
+
+PUT http://localhost:3000/htl/dating/3 HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Oliver nur in bessa",
+    "age": 79,
+    "gender": "kampfhelikopter",
+    "email": "Oliver.blackhawk@cia.at",
+    "description": "Massive Aggresionsprobleme wegen Typescript/Javascript"
+}
+
+###################################################
+
+DELETE http://localhost:3000/htl/dating/3 HTTP/1.1
+
+###################################################
