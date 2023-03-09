@@ -50,21 +50,21 @@ nav a:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 400px;
-  background-image: url(hero-bg.jpg);
+  height: 100vh;
+  background-image: url("../img/hero-bg.jpg");
   background-size: cover;
   color: #ffffff;
   text-align: center;
 }
 
 .hero h1 {
-  color:#000000;
+  color:#ff0088;
   font-size: 48px;
   margin-bottom: 20px;
 }
 
 .hero p {
-  color:#000000;
+  color:#ff0088;
   font-size: 24px;
   margin-bottom: 30px;
 }

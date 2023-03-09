@@ -4,4 +4,6 @@ export interface IUser {
     age: number;
     email: string;
     gender: string;
+    description: string;
+    imgPath?: string; 
 }

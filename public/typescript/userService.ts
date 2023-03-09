@@ -8,6 +8,7 @@ export class UserSevice {
             age: 17,
             gender: "male",
             email: "Linus@htl.at",
+            description: "Hallo ich bin Linus und ein Gott in Deutsch"
         },
         {
             id: 2,
@@ -15,6 +16,7 @@ export class UserSevice {
             age: 17,
             gender: "female",
             email: "Bajtik@htl.at",
+            description: "Chinese hier, ich kann gut Mathe"
         },
         {
             id: 3,
@@ -22,6 +24,7 @@ export class UserSevice {
             age: 17,
             gender: "male",
             email: "Oliver@htl.at",
+            description: "Massive Aggresionsprobleme wegen Typescript/Javascript"
         }
     ];
 
