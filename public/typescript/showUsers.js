@@ -14,7 +14,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
             if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
             if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
@@ -40,7 +40,7 @@ function getUsers() {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, fetch("http://localhost:3000/all", {})
+                case 0: return [4 /*yield*/, fetch("http://localhost:3000/htl/dating", {})
                         .then(function (response) { return response.json(); })
                         .then(function (data) {
                         createList(data);
@@ -55,11 +55,6 @@ function getUsers() {
 function createList(users) {
     users.forEach(function (u) {
         console.log(u);
-        /*const test = document.createElement("h3");
-        test.textContent = u.name + " email:" + u.email + "\n";
-        const list = document.getElementById("search-results")!;
-        
-        list?.appendChild(test);*/
         var searchResults = document.getElementById("search-results");
         searchResults.innerHTML = "";
         if (users.length > 0) {
@@ -68,6 +63,11 @@ function createList(users) {
                 var user = users_1[_i];
                 var li = document.createElement("li");
                 li.textContent = user.name;
+                if (user.hasOwnProperty('imgPath')) {
+                    var pic = document.createElement("img");
+                    pic.setAttribute("src", user.imgPath);
+                    li.appendChild(pic);
+                }
                 ul.appendChild(li);
             }
             searchResults.appendChild(ul);

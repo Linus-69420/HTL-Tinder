@@ -29,7 +29,8 @@ function addUser(): void {
       name: nameInput.value,
       email: emailInput.value,
       age: parseInt(ageInput.value),
-      gender: genderInput.value
+      gender: genderInput.value,
+      description : "f"
     };
       /*fetch("http://localhost:3000/new", {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
@@ -56,16 +57,17 @@ async function createUser() {
       name: nameInput.value,
       email: emailInput.value,
       age: parseInt(ageInput.value),
-      gender: genderInput.value
+      gender: genderInput.value,
+      description : "idk"
     };
     var data = new FormData();
     data.append( "json", JSON.stringify( newUser ) );
 
-    await fetch("http://localhost:3000/new",
+    await fetch("http://localhost:3000/htl/dating",
     {
         method: "POST",
         body: data
     })
     .then(function(res){ return res; })
-    .then(function(data){ alert( JSON.stringify( data ) ) })
+    .then(function(data){ alert( JSON.stringify( data ) ); console.log(data); })
 }

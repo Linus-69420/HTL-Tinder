@@ -1,1 +1,91 @@
-[{"id":1,"name":"Linus","age":17,"gender":"male","email":"Linus@htl.at","description":"Hallo ich bin Linus und ein Gott in Deutsch"},{"id":2,"name":"Oliver nur in bessa","age":79,"gender":"kampfhelikopter","email":"Oliver.blackhawk@cia.at","description":"kampfhelikopter"},{"id":3,"name":"Oliver nur in bessa","age":79,"gender":"kampfhelikopter","email":"Oliver.blackhawk@cia.at","description":"kampfhelikopter"},{"id":4,"name":"Sukii","age":17,"gender":"male","email":"sukii@htl.at","description":"mache eher wenig bei dem projekt"},{"id":5,"name":"Urschizi","age":67,"gender":"male","email":"deutsch@htl.at","description":"Deutsch ist wichtiger als Programmieren","imgPath":"../img/users/urschitz.jpg"},{"id":6,"name":"Abdul","age":24,"gender":"male","email":"abdul@htl.at","description":"male"},{"id":7,"name":"Abdul","age":24,"gender":"male","email":"abdul@htl.at","description":"male"},{"id":8,"name":"Abdul","age":24,"gender":"male","email":"abdul@htl.at","description":"male"},{"id":9,"name":"Abdul","age":24,"gender":"male","email":"abdul@htl.at","description":"male"},{"id":10,"name":"Abdul","age":24,"gender":"male","email":"abdul@htl.at","description":"male"}]
+[
+    {
+        "id": 1,
+        "name": "Linus",
+        "age": 17,
+        "gender": "male",
+        "email": "Linus@htl.at",
+        "description": "Hallo ich bin Linus und ein Gott in Deutsch"
+    },
+    {
+        "id": 2,
+        "name": "Oliver nur in bessa",
+        "age": 79,
+        "gender": "kampfhelikopter",
+        "email": "Oliver.blackhawk@cia.at",
+        "description": "kampfhelikopter"
+    },
+    {
+        "id": 3,
+        "name": "Oliver nur in bessa",
+        "age": 79,
+        "gender": "kampfhelikopter",
+        "email": "Oliver.blackhawk@cia.at",
+        "description": "kampfhelikopter"
+    },
+    {
+        "id": 4,
+        "name": "Sukii",
+        "age": 17,
+        "gender": "male",
+        "email": "sukii@htl.at",
+        "description": "mache eher wenig bei dem projekt"
+    },
+    {
+        "id": 5,
+        "name": "Urschizi",
+        "age": 67,
+        "gender": "male",
+        "email": "deutsch@htl.at",
+        "description": "Deutsch ist wichtiger als Programmieren",
+        "imgPath": "../img/users/urschitz.jpg"
+    },
+    {
+        "id": 6,
+        "name": "Abdul",
+        "age": 24,
+        "gender": "male",
+        "email": "abdul@htl.at",
+        "description": "male"
+    },
+    {
+        "id": 7,
+        "name": "Abdul",
+        "age": 24,
+        "gender": "male",
+        "email": "abdul@htl.at",
+        "description": "male"
+    },
+    {
+        "id": 8,
+        "name": "Abdul",
+        "age": 24,
+        "gender": "male",
+        "email": "abdul@htl.at",
+        "description": "male"
+    },
+    {
+        "id": 9,
+        "name": "Abdul",
+        "age": 24,
+        "gender": "male",
+        "email": "abdul@htl.at",
+        "description": "male"
+    },
+    {
+        "id": 10,
+        "name": "Abdul",
+        "age": 24,
+        "gender": "male",
+        "email": "abdul@htl.at",
+        "description": "male"
+    },
+    {
+        "id": 11,
+        "age": null
+    },
+    {
+        "id": 12,
+        "age": null
+    }
+]

@@ -2,7 +2,7 @@ import { response } from "express";
 import {IUser} from "./user";
 
 async function getUsers(){
-  await fetch("http://localhost:3000/all",{})
+  await fetch("http://localhost:3000/htl/dating",{})
   .then((response) => response.json())
   .then((data) => {
     createList(data);
@@ -21,6 +21,13 @@ function createList(users){
     for (const user of users) {
       const li = document.createElement("li");
       li.textContent = user.name;
+
+      if(user.hasOwnProperty('imgPath')){
+        const pic = document.createElement("img");
+        pic.setAttribute("src", user.imgPath);
+        li.appendChild(pic);
+      }
+
       ul.appendChild(li);
     }
     searchResults.appendChild(ul);

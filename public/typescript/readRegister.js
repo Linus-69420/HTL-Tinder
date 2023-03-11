@@ -14,7 +14,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
             if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
             if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
@@ -64,7 +64,8 @@ function addUser() {
         name: nameInput.value,
         email: emailInput.value,
         age: parseInt(ageInput.value),
-        gender: genderInput.value
+        gender: genderInput.value,
+        description: "f"
     };
     /*fetch("http://localhost:3000/new", {
     method: "POST", // *GET, POST, PUT, DELETE, etc.
@@ -94,16 +95,17 @@ function createUser() {
                         name: nameInput.value,
                         email: emailInput.value,
                         age: parseInt(ageInput.value),
-                        gender: genderInput.value
+                        gender: genderInput.value,
+                        description: "idk"
                     };
                     data = new FormData();
                     data.append("json", JSON.stringify(newUser));
-                    return [4 /*yield*/, fetch("http://localhost:3000/new", {
+                    return [4 /*yield*/, fetch("http://localhost:3000/htl/dating", {
                             method: "POST",
                             body: data
                         })
                             .then(function (res) { return res; })
-                            .then(function (data) { alert(JSON.stringify(data)); })];
+                            .then(function (data) { alert(JSON.stringify(data)); console.log(data); })];
                 case 1:
                     _a.sent();
                     return [2 /*return*/];
