@@ -1,5 +1,6 @@
 import express, { response } from "express";
-import { getAllUsers, getUserById, addUser, deleteUser } from "./user-repository";
+import { IUser } from "./user";
+import { getAllUsers, getUserById, addUser, deleteUser, updateUser } from "./user-service";
 const userRouter = express.Router();
 
 
@@ -25,24 +26,19 @@ userRouter
 })
 .put("/:id", (request, response) => {
     const id: number = Number(request.params.id);
-        let user = getUserById(id);
+      
+    const name : string = request.body.name;
+    const age : number = Number(request.body.age);
+    const gender : string = request.body.gender;
+    const description : string = request.body.gender;
+    const email : string = request.body.email;
+    let user : IUser | undefined  = updateUser(id, name,age, gender, email, description);
 
-        if (user !== undefined) {
-            const name : string = request.body.name;
-            const age : number = Number(request.body.age);
-            const gender : string = request.body.gender;
-            const description : string = request.body.gender;
-            const email : string = request.body.email;
-
-            user.name = name;
-            user.age = age;
-            user.gender = gender;
-            user.description = description;
-            user.email = email;
-
-            return response.send(JSON.stringify(user)).status(200);
-        }
-        return response.status(404);
+    if(user !== undefined){
+        return response.send(JSON.stringify(user)).status(200);
+    }
+    
+    return response.status(404);
 })
 .delete("/:id", (request, response) => {
     const user = getUserById(Number(request.params.id));
