@@ -1,19 +1,5 @@
 import { IUser } from "./user";
 
-const fs = require('fs');
-console.log("e");
-function addUser(user: IUser): void {
-    var data = fs.readFileSync('/public/json/users.json');
-    var users = JSON.parse(data);
-    users.push(user);
-    let newData = JSON.stringify(users);
-    fs.writeFile('/public/json/users.json', newData, error => {
-      if(error) throw error;
-
-      console.log("New Data added!");
-    })
-  }
-
 async function createUser() {
   const nameInput: HTMLInputElement = document.getElementById('name') as HTMLInputElement;
     const emailInput: HTMLInputElement = document.getElementById('email') as HTMLInputElement;
@@ -34,11 +20,16 @@ async function createUser() {
     
     
     console.log(newUser);
-    addUser(newUser);
-    /*await fetch(`http://localhost:3000/htl/dating/`, {})
+    await fetch(`http://localhost:3000/htl/dating/`, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: "POST",
+      body: JSON.stringify(newUser)
+    })
         .then((response) => response.json())
         .then((data) => {
             console.log(data);
-            addUser(data);
-        });*/
+        });
 }
