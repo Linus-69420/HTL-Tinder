@@ -14,7 +14,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+        while (_) try {
             if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
             if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
@@ -36,80 +36,41 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-/*const form = document.querySelector<HTMLFormElement>("register-form");
-const nameinput = form?.querySelector<HTMLInputElement>('input[name="name"]');
-const emailinput = form?.querySelector<HTMLInputElement>('input[name="email"]');
-const ageinput = form?.querySelector<HTMLInputElement>('input[name="age"]');
-const genderinput = form?.querySelector<HTMLSelectElement>('select[name="gender"]');
-
-form?.addEventListener('submit', (event) => {
-    
-    const name = nameinput?.value;
-    const email = emailinput?.value;
-    const age = ageinput?.value;
-    const gender = genderinput?.value;
-
-    console.log(name);
-    console.log(email);
-    console.log(age);
-    console.log(gender);
-  });*/
+var fs = require('fs');
 console.log("e");
-function addUser() {
-    var nameInput = document.getElementById('name');
-    var emailInput = document.getElementById('email');
-    var ageInput = document.getElementById('age');
-    var genderInput = document.getElementById('gender');
-    var newUser = {
-        name: nameInput.value,
-        email: emailInput.value,
-        age: parseInt(ageInput.value),
-        gender: genderInput.value,
-        description: "f"
-    };
-    /*fetch("http://localhost:3000/new", {
-    method: "POST", // *GET, POST, PUT, DELETE, etc.
-    mode: "cors", // no-cors, *cors, same-origin
-    cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-    credentials: "same-origin", // include, *same-origin, omit
-    headers: {
-      "Content-Type": "application/json",
-      // 'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    redirect: "follow", // manual, *follow, error
-    referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-    body: JSON.stringify(newUser), // body data type must match "Content-Type" header
-  });*/
+function addUser(user) {
+    var data = fs.readFileSync('/public/json/users.json');
+    var users = JSON.parse(data);
+    users.push(user);
+    var newData = JSON.stringify(users);
+    fs.writeFile('/public/json/users.json', newData, function (error) {
+        if (error)
+            throw error;
+        console.log("New Data added!");
+    });
 }
 function createUser() {
     return __awaiter(this, void 0, void 0, function () {
-        var nameInput, emailInput, ageInput, genderInput, newUser, data;
+        var nameInput, emailInput, pwInput, ageInput, genderInput, img, newUser;
         return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    nameInput = document.getElementById('name');
-                    emailInput = document.getElementById('email');
-                    ageInput = document.getElementById('age');
-                    genderInput = document.getElementById('gender');
-                    newUser = {
-                        name: nameInput.value,
-                        email: emailInput.value,
-                        age: parseInt(ageInput.value),
-                        gender: genderInput.value,
-                        description: "idk"
-                    };
-                    data = new FormData();
-                    data.append("json", JSON.stringify(newUser));
-                    return [4 /*yield*/, fetch("http://localhost:3000/htl/dating", {
-                            method: "POST",
-                            body: data
-                        })
-                            .then(function (res) { return res; })
-                            .then(function (data) { alert(JSON.stringify(data)); console.log(data); })];
-                case 1:
-                    _a.sent();
-                    return [2 /*return*/];
-            }
+            nameInput = document.getElementById('name');
+            emailInput = document.getElementById('email');
+            pwInput = document.getElementById('password');
+            ageInput = document.getElementById('age');
+            genderInput = document.getElementById('gender');
+            img = document.getElementById('pic');
+            newUser = {
+                name: nameInput.value,
+                email: emailInput.value,
+                password: pwInput.value,
+                age: parseInt(ageInput.value),
+                gender: genderInput.value,
+                description: "Ich bin ".concat(nameInput.value, " und bin ").concat(ageInput.value, " Jahre alt."),
+                imgPath: img.value
+            };
+            console.log(newUser);
+            addUser(newUser);
+            return [2 /*return*/];
         });
     });
 }
