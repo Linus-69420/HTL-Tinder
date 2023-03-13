@@ -25,7 +25,7 @@ export function addUser(name : string,password : string, age : number, gender : 
         optionalImgPath = imgPath;
     }
 
-    const user = {
+    const user :IUser = {
     id : ++nextId,
     name : name,
     password : password,
