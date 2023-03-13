@@ -19,14 +19,21 @@ export function getUserById(id : number) : IUser | undefined {
     return users.find(u => u.id == id)
 }
 
-export function addUser(name : string, age : number, gender : string, email : string, description : string ) : IUser {
-   const user = {
+export function addUser(name : string,password : string, age : number, gender : string, email : string, description : string, imgPath? : string ) : IUser {
+    let optionalImgPath;
+    if (typeof imgPath !== 'undefined') {
+        optionalImgPath = imgPath;
+    }
+
+    const user = {
     id : ++nextId,
     name : name,
+    password : password,
     age : age,
     gender : gender,
     email : email,
-    description : description
+    description : description,
+    imgPath: optionalImgPath
    }
 
    users.push(user);
@@ -34,17 +41,12 @@ export function addUser(name : string, age : number, gender : string, email : st
    return user;
 }
 
-export function updateUser(id : number, name : string, age : number, gender : string, email : string, description : string) : IUser | undefined {
+export function updateUser(id : number, name : string, password : string, age : number, gender : string, email : string, description : string) : IUser | undefined {
     let user : IUser | undefined = getUserById(id);
 
         if (user !== undefined) {
-            const newName : string =name;
-            const newAge : number = age;
-            const newGender : string = gender;
-            const newDescription : string = gender;
-            const newEmail : string = email;
-
             user.name = name;
+            user.password = password;
             user.age = age;
             user.gender = gender;
             user.description = description;

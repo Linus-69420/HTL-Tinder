@@ -11,6 +11,7 @@ Content-Type: application/json
 
 {
     "name": "Abdul",
+    "password" : "123",
     "age": 24,
     "gender": "male",
     "email": "abdul@htl.at",
@@ -24,6 +25,7 @@ Content-Type: application/json
 
 {
     "name": "Oliver nur in bessa",
+    "password" : "123",
     "age": 79,
     "gender": "kampfhelikopter",
     "email": "Oliver.blackhawk@cia.at",

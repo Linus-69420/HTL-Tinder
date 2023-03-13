@@ -43,11 +43,14 @@ function displayRandomUser() : void {
             img.setAttribute("src", user.imgPath!);
           }
     
-        const name = document.createElement("h2");
+        const name = document.createElement("h1");
         name.innerHTML = user.name;
     
-        const age = document.createElement("p");
+        const age = document.createElement("h2");
         age.innerHTML = user.age.toString();
+
+        const gender = document.createElement("p");
+        gender.innerHTML = "Gender: " + user.gender;
     
         const description = document.createElement("p");
         description.innerHTML = user.description;
@@ -55,6 +58,7 @@ function displayRandomUser() : void {
         card.appendChild(img);
         card.appendChild(name);
         card.appendChild(age);
+        card.appendChild(gender);
         card.appendChild(description);
         container?.appendChild(card);
     }

@@ -17,22 +17,25 @@ userRouter
 })
 .post("/", (request, response) => {
     const name : string = request.body.name;
+    const password : string = request.body.password;
     const age : number = Number(request.body.age);
     const gender : string = request.body.gender;
     const description : string = request.body.gender;
     const email : string = request.body.email;
+    const imgPath = request.body.imgPath;
 
-    return response.send(JSON.stringify(addUser(name, age, gender, email, description))).status(200);
+    return response.send(JSON.stringify(addUser(name, password, age, gender, email, description, imgPath))).status(200);
 })
 .put("/:id", (request, response) => {
     const id: number = Number(request.params.id);
       
     const name : string = request.body.name;
+    const password : string = request.body.password;
     const age : number = Number(request.body.age);
     const gender : string = request.body.gender;
     const description : string = request.body.gender;
     const email : string = request.body.email;
-    let user : IUser | undefined  = updateUser(id, name,age, gender, email, description);
+    let user : IUser | undefined  = updateUser(id, name, password, age, gender, email, description);
 
     if(user !== undefined){
         return response.send(JSON.stringify(user)).status(200);
