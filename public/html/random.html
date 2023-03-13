@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Meine Dating-Website</title>
-    <link rel="stylesheet" href="../css/stylesheet-main.css">
-    <link rel="stylesheet" href="../css/stylesheet-random.css">
-  </head>
-  <body onload="getUsers()">
-    <header>
-      <nav>
-        <ul>
-          <li><a href="./index.html">Home</a></li>
-          <li><a href="./search.html">Suche</a></li>
-          <li><a href="./random.html">Random</a></li>
-          <li><a href="./register.html">Register</a></li>
-        </ul>
-      </nav>
-    </header>
-    <main>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Meine Dating-Website</title>
+  <link rel="stylesheet" href="../css/stylesheet-main.css">
+  <link rel="stylesheet" href="../css/stylesheet-random.css">
+</head>
+
+<body onload="getUsers()">
+  <header>
+    <nav>
+      <ul>
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./search.html">Suche</a></li>
+        <li><a href="./random.html">Random</a></li>
+        <li><a href="./register.html">Register</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
     <div class="container" id="container">
       <div class="card" id="card"></div>
     </div>
-    <button class="like" onclick="like()">Like</button>
-    <button class="dislike" onclick="dislike()">Dislike</button>
-    <footer>
-     
-    </footer>
+    
+    <div class="wrapper" id="wrapper">      
+      <button class="like" onclick="like()">Like</button>
+      <button class="dislike" onclick="dislike()">Dislike</button>
+    </div>
     <script>var exports = {};</script>
-    <script>function require(){};</script>
-    <script src="../typescript/random.js"></script>  
-  </body>
+    <script>function require() { };</script>
+    <script src="../typescript/random.js"></script>
+</body>
+
 </html>
