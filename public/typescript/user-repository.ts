@@ -1,8 +1,9 @@
 import { IUser } from "./user";
 import { readFile, writeFile } from "fs/promises";
 import { readFileSync } from "fs";
+import { join } from "path";
 
-const path : string = "../json/users.json";
+const path : string = __dirname.replace("typescript","json") +"/users.json";
 
 export async function write(users : IUser[]){
     await writeFile(path, JSON.stringify(users));
