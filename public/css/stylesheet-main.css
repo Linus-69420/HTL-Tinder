@@ -222,6 +222,8 @@ footer {
 input[type="text"],
 input[type="email"],
 input[type="age"],
+input[type="password"],
+input[type="file"],
 select[type="gender"] {
   display: block;
   width: 100%;
