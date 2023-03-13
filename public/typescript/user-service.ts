@@ -1,3 +1,4 @@
+import { isUnionTypeNode } from "typescript";
 import { IUser } from "./user";
 import { write, read} from "./user-repository";
 
@@ -17,6 +18,10 @@ export function getAllUsers() : IUser[] {
 
 export function getUserById(id : number) : IUser | undefined {
     return users.find(u => u.id == id)
+}
+
+export function getUserByNameAndPw(name : string, pw: string) : IUser | undefined{
+    return users.find(u => u.name === name && u.password === pw );
 }
 
 export function addUser(name : string,password : string, age : number, gender : string, email : string, description : string, imgPath? : string ) : IUser {

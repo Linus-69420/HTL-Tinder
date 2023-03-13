@@ -14,7 +14,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
             if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
             if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
@@ -36,72 +36,18 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-var users = [];
-function dislike() {
-    if (users.length > 0)
-        displayRandomUser();
-}
-function like() {
-    if (users.length > 0)
-        displayRandomUser();
-}
-function getUsers() {
+console.log("e");
+function getUser() {
     return __awaiter(this, void 0, void 0, function () {
+        var nameInput, pwInput;
         return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    console.log("e");
-                    return [4 /*yield*/, fetch("http://localhost:3000/htl/dating", {})
-                            .then(function (response) { return response.json(); })
-                            .then(function (data) {
-                            console.log(data);
-                            saveUsers(data);
-                            displayRandomUser();
-                        })];
-                case 1:
-                    _a.sent();
-                    return [2 /*return*/];
-            }
+            nameInput = document.getElementById('name');
+            pwInput = document.getElementById('password');
+            console.log(nameInput.value, pwInput.value);
+            return [2 /*return*/];
         });
     });
 }
-function displayRandomUser() {
-    var container = document.getElementById("container");
-    container.innerHTML = "";
-    if (users.length > 0) {
-        console.log("edff");
-        var num = Math.floor(Math.random() * users.length);
-        var user = users[num];
-        users.splice(num, 1);
-        var card = document.createElement("div");
-        card.className = "card";
-        var img = document.createElement("img");
-        img.setAttribute("src", "https://via.placeholder.com/200x200");
-        if (user.hasOwnProperty('imgPath')) {
-            img.setAttribute("src", user.imgPath);
-        }
-        var name_1 = document.createElement("h1");
-        name_1.innerHTML = user.name;
-        var age = document.createElement("h2");
-        age.innerHTML = user.age.toString();
-        var gender = document.createElement("p");
-        gender.innerHTML = "Gender: " + user.gender;
-        var description = document.createElement("p");
-        description.innerHTML = user.description;
-        card.appendChild(img);
-        card.appendChild(name_1);
-        card.appendChild(age);
-        card.appendChild(gender);
-        card.appendChild(description);
-        container === null || container === void 0 ? void 0 : container.appendChild(card);
-    }
-    else {
-        var container_1 = document.getElementById("container");
-        var header = document.createElement("h2");
-        header.innerHTML = "Keine neuen User gefunden";
-        container_1 === null || container_1 === void 0 ? void 0 : container_1.appendChild(header);
-    }
-}
-function saveUsers(data) {
-    users = data;
+function displayUser(user) {
+    console.log(user);
 }

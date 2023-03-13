@@ -58,7 +58,7 @@ async function createUser() {
     const newUser: IUser = {
       name: nameInput.value,
       email: emailInput.value,
-      pw: pwInput.value,
+      password: pwInput.value,
       age: parseInt(ageInput.value),
       gender: genderInput.value,
       description : "idk",

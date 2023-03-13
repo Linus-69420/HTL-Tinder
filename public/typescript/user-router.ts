@@ -1,6 +1,6 @@
 import express, { response } from "express";
 import { IUser } from "./user";
-import { getAllUsers, getUserById, addUser, deleteUser, updateUser } from "./user-service";
+import { getAllUsers, getUserById, addUser, deleteUser, updateUser, getUserByNameAndPw } from "./user-service";
 const userRouter = express.Router();
 
 
@@ -14,6 +14,17 @@ userRouter
         return response.status(404);
     }
     return response.send(JSON.stringify(user));
+})
+.get('/:name/:password', (request, response) => {
+    const name : string = request.params.name;
+    const password : string = request.params.password;
+    
+    const user : IUser | undefined = getUserByNameAndPw(name, password);
+
+    if(user !== undefined){
+        return response.send(JSON.stringify(user));
+    }
+    return response.status(404);
 })
 .post("/", (request, response) => {
     const name : string = request.body.name;
