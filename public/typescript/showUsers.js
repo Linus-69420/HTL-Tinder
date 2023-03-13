@@ -69,38 +69,41 @@ function searchUsers() {
     });
 }
 function createList(users, name) {
-    users.forEach(function (u) {
-        console.log(u);
-        var searchResults = document.getElementById("search-results");
-        searchResults.innerHTML = "";
-        if (users.length > 0) {
-            var ul = document.createElement("ul");
-            var li = document.createElement("li");
-            li.textContent = u.name;
-            var p = document.createElement("p");
-            p.textContent = u.age;
-            li.appendChild(p);
-            p = document.createElement("p");
-            p.textContent = u.gender;
-            li.appendChild(p);
-            p = document.createElement("p");
-            p.textContent = u.email;
-            li.appendChild(p);
-            p = document.createElement("p");
-            p.textContent = u.description;
-            li.appendChild(p);
-            if (u.hasOwnProperty('imgPath')) {
-                var pic = document.createElement("img");
-                pic.setAttribute("src", u.imgPath);
-                li.appendChild(pic);
+    var searchResults = document.getElementById("search-results");
+    searchResults.innerHTML = "";
+    var ul = document.createElement("ul");
+    if (users.length > 0) {
+        users.forEach(function (u) {
+            var _a;
+            if (u.name.toLocaleLowerCase().includes(name.toLocaleLowerCase())) {
+                console.log(u);
+                var li = document.createElement("li");
+                li.textContent = u.name;
+                var p = document.createElement("p");
+                p.textContent = u.age.toString();
+                li.appendChild(p);
+                p = document.createElement("p");
+                p.textContent = u.gender;
+                li.appendChild(p);
+                p = document.createElement("p");
+                p.textContent = u.email;
+                li.appendChild(p);
+                p = document.createElement("p");
+                p.textContent = u.description;
+                li.appendChild(p);
+                if (u.hasOwnProperty('imgPath')) {
+                    var pic = document.createElement("img");
+                    pic.setAttribute("src", (_a = u.imgPath) === null || _a === void 0 ? void 0 : _a.toString());
+                    li.appendChild(pic);
+                }
+                ul.appendChild(li);
             }
-            ul.appendChild(li);
-            searchResults.appendChild(ul);
-        }
-        else {
-            var p_1 = document.createElement("p");
-            p_1.textContent = "Keine Benutzer gefunden.";
-            searchResults.appendChild(p_1);
-        }
-    });
+        });
+        searchResults.appendChild(ul);
+    }
+    else {
+        var p = document.createElement("p");
+        p.textContent = "Keine Benutzer gefunden.";
+        searchResults.appendChild(p);
+    }
 }
