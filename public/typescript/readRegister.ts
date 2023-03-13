@@ -30,7 +30,7 @@ function addUser(): void {
       email: emailInput.value,
       age: parseInt(ageInput.value),
       gender: genderInput.value,
-      description : "f"
+      description: `idk`
     };
       /*fetch("http://localhost:3000/new", {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
