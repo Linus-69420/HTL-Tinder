@@ -14,7 +14,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+        while (_) try {
             if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
             if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
@@ -43,7 +43,7 @@ function getUsers() {
                 case 0: return [4 /*yield*/, fetch("http://localhost:3000/htl/dating", {})
                         .then(function (response) { return response.json(); })
                         .then(function (data) {
-                        createList(data);
+                        createList(data, document.getElementById("search-input").value);
                     })];
                 case 1:
                     _a.sent();
@@ -52,30 +52,55 @@ function getUsers() {
         });
     });
 }
-function createList(users) {
+function searchUsers() {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, fetch("http://localhost:3000/htl/dating", {})
+                        .then(function (response) { return response.json(); })
+                        .then(function (data) {
+                        createList(data, document.getElementById("search-input").value);
+                    })];
+                case 1:
+                    _a.sent();
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+function createList(users, name) {
     users.forEach(function (u) {
         console.log(u);
         var searchResults = document.getElementById("search-results");
         searchResults.innerHTML = "";
         if (users.length > 0) {
             var ul = document.createElement("ul");
-            for (var _i = 0, users_1 = users; _i < users_1.length; _i++) {
-                var user = users_1[_i];
-                var li = document.createElement("li");
-                li.textContent = user.name;
-                if (user.hasOwnProperty('imgPath')) {
-                    var pic = document.createElement("img");
-                    pic.setAttribute("src", user.imgPath);
-                    li.appendChild(pic);
-                }
-                ul.appendChild(li);
+            var li = document.createElement("li");
+            li.textContent = u.name;
+            var p = document.createElement("p");
+            p.textContent = u.age;
+            li.appendChild(p);
+            p = document.createElement("p");
+            p.textContent = u.gender;
+            li.appendChild(p);
+            p = document.createElement("p");
+            p.textContent = u.email;
+            li.appendChild(p);
+            p = document.createElement("p");
+            p.textContent = u.description;
+            li.appendChild(p);
+            if (u.hasOwnProperty('imgPath')) {
+                var pic = document.createElement("img");
+                pic.setAttribute("src", u.imgPath);
+                li.appendChild(pic);
             }
+            ul.appendChild(li);
             searchResults.appendChild(ul);
         }
         else {
-            var p = document.createElement("p");
-            p.textContent = "Keine Benutzer gefunden.";
-            searchResults.appendChild(p);
+            var p_1 = document.createElement("p");
+            p_1.textContent = "Keine Benutzer gefunden.";
+            searchResults.appendChild(p_1);
         }
     });
 }
