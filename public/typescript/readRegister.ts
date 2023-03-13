@@ -18,14 +18,14 @@ form?.addEventListener('submit', (event) => {
     console.log(gender);
   });*/
   
-  console.log("e");
+console.log("e");
 function addUser(): void {
     const nameInput: HTMLInputElement = document.getElementById('name') as HTMLInputElement;
     const emailInput: HTMLInputElement = document.getElementById('email') as HTMLInputElement;
     const ageInput: HTMLInputElement = document.getElementById('age') as HTMLInputElement;
     const genderInput: HTMLSelectElement = document.getElementById('gender') as HTMLSelectElement;
   
-    const newUser: IUser = {
+    /*const newUser: IUser = {
       name: nameInput.value,
       email: emailInput.value,
       age: parseInt(ageInput.value),
@@ -50,15 +50,19 @@ function addUser(): void {
 async function createUser() {
   const nameInput: HTMLInputElement = document.getElementById('name') as HTMLInputElement;
     const emailInput: HTMLInputElement = document.getElementById('email') as HTMLInputElement;
+    const pwInput: HTMLInputElement = document.getElementById('password') as HTMLInputElement;
     const ageInput: HTMLInputElement = document.getElementById('age') as HTMLInputElement;
     const genderInput: HTMLSelectElement = document.getElementById('gender') as HTMLSelectElement;
+    const img: HTMLInputElement = document.getElementById('pic') as HTMLInputElement;
   
     const newUser: IUser = {
       name: nameInput.value,
       email: emailInput.value,
+      pw: pwInput.value,
       age: parseInt(ageInput.value),
       gender: genderInput.value,
-      description : "idk"
+      description : "idk",
+      imgPath: img.value
     };
     var data = new FormData();
     data.append( "json", JSON.stringify( newUser ) );
