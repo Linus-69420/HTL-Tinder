@@ -81,3 +81,11 @@ body {
   border-radius: 5px;
   margin-left: 10px;
 }
+
+.like :hover {
+  background-color: rgb(9, 255, 9);
+}
+
+.dislike :hover {
+  background-color: rgb(247, 98, 98);
+}
