@@ -5,7 +5,8 @@
         "age": 17,
         "gender": "male",
         "email": "Linus@htl.at",
-        "description": "Hallo ich bin Linus und ein Gott in Deutsch"
+        "description": "Hallo ich bin Linus und ein Gott in Deutsch",
+        "imgPath": "../img/users/linus.jpg"
     },
     {
         "id": 2,
@@ -13,15 +14,8 @@
         "age": 79,
         "gender": "kampfhelikopter",
         "email": "Oliver.blackhawk@cia.at",
-        "description": "kampfhelikopter"
-    },
-    {
-        "id": 3,
-        "name": "Oliver nur in bessa",
-        "age": 79,
-        "gender": "kampfhelikopter",
-        "email": "Oliver.blackhawk@cia.at",
-        "description": "kampfhelikopter"
+        "description": "kampfhelikopter",
+        "imgPath": "../img/users/oliver.jpg"
     },
     {
         "id": 4,
@@ -29,7 +23,8 @@
         "age": 17,
         "gender": "male",
         "email": "sukii@htl.at",
-        "description": "mache eher wenig bei dem projekt"
+        "description": "mache eher wenig bei dem projekt",
+        "imgPath": "../img/users/sukii.jpg"
     },
     {
         "id": 5,
@@ -40,21 +35,22 @@
         "description": "Deutsch ist wichtiger als Programmieren",
         "imgPath": "../img/users/urschitz.jpg"
     },
-    
-    {
-        "id": 11,
-        "name": "Oliver nur in bessa",
-        "age": 79,
-        "gender": "kampfhelikopter",
-        "email": "Oliver.blackhawk@cia.at",
-        "description": "kampfhelikopter"
-    },
     {
         "id": 12,
-        "name": "Oliver nur in bessa",
+        "name": "Bajtik",
         "age": 79,
-        "gender": "kampfhelikopter",
-        "email": "Oliver.blackhawk@cia.at",
-        "description": "kampfhelikopter"
+        "gender": "unsicher",
+        "email": "bajtik@gmx.at",
+        "description": "kann nicht googeln aber ansich nett",
+        "imgPath": "../img/users/bajtik.jpg"
+    },
+    {
+        "id": 13,
+        "name": "Abdul",
+        "age": 24,
+        "gender": "male",
+        "email": "abdul@htl.at",
+        "description": "male",
+        "imgPath": "../img/users/abdul.jpg"
     }
 ]

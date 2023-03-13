@@ -4,7 +4,7 @@ import { IUser } from "./user";
 let users : IUser[] = [];
 
 function dislike(){
-    if(users.length >0)
+    if(users.length > 0)
         displayRandomUser();
 }
 
