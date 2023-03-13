@@ -29,7 +29,8 @@ function addUser(): void {
       name: nameInput.value,
       email: emailInput.value,
       age: parseInt(ageInput.value),
-      gender: genderInput.value
+      gender: genderInput.value,
+      description: `Hallo! Ich heiße ${nameInput.value} und bin ${ageInput.value} Jahre alt.`
     };
       /*fetch("http://localhost:3000/new", {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
@@ -56,7 +57,8 @@ async function createUser() {
       name: nameInput.value,
       email: emailInput.value,
       age: parseInt(ageInput.value),
-      gender: genderInput.value
+      gender: genderInput.value,
+      description: `Hallo! Ich heiße ${nameInput.value} und bin ${ageInput.value} Jahre alt.`
     };
     var data = new FormData();
     data.append( "json", JSON.stringify( newUser ) );
