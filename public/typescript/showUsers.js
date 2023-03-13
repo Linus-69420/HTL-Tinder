@@ -36,22 +36,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-function getUsers() {
-    return __awaiter(this, void 0, void 0, function () {
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, fetch("http://localhost:3000/htl/dating", {})
-                        .then(function (response) { return response.json(); })
-                        .then(function (data) {
-                        createList(data, document.getElementById("search-input").value);
-                    })];
-                case 1:
-                    _a.sent();
-                    return [2 /*return*/];
-            }
-        });
-    });
-}
 function searchUsers() {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
@@ -69,13 +53,15 @@ function searchUsers() {
     });
 }
 function createList(users, name) {
+    var usersFound = false;
     var searchResults = document.getElementById("search-results");
     searchResults.innerHTML = "";
     var ul = document.createElement("ul");
-    if (users.length > 0) {
+    if (users.length > 0 && name != "") {
         users.forEach(function (u) {
             var _a;
             if (u.name.toLocaleLowerCase().includes(name.toLocaleLowerCase())) {
+                usersFound = true;
                 console.log(u);
                 var li = document.createElement("li");
                 li.textContent = u.name;
@@ -100,8 +86,30 @@ function createList(users, name) {
             }
         });
         searchResults.appendChild(ul);
+        var div1 = document.createElement("div");
+        div1.className = "ProfileItem";
+        div1.textContent = "Hallo";
+        var div2 = document.createElement("div");
+        div2.className = "ProfileImg";
+        var div3 = document.createElement("div");
+        div3.className = "imageContain";
+        var img = document.createElement("img");
+        img.src = "https://placehold.it/200x200";
+        div3.appendChild(img);
+        div2.appendChild(div3);
+        var div4 = document.createElement("div");
+        div4.className = "ProfileDes";
+        var a = document.createElement("a");
+        a.className = "profileTitle";
+        a.textContent = "Username";
+        var div5 = document.createElement("div");
+        div5.className = "profileInfo";
+        div4.append(a, div5);
+        div1.appendChild(div2);
+        searchResults.appendChild(div1);
     }
-    else {
+    if (!usersFound) {
+        searchResults.innerHTML = "";
         var p = document.createElement("p");
         p.textContent = "Keine Benutzer gefunden.";
         searchResults.appendChild(p);
