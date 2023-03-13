@@ -36,18 +36,35 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-console.log("e");
 function getUser() {
     return __awaiter(this, void 0, void 0, function () {
-        var nameInput, pwInput;
+        var nameInput, pwInput, userDiv;
         return __generator(this, function (_a) {
-            nameInput = document.getElementById('name');
-            pwInput = document.getElementById('password');
-            console.log(nameInput.value, pwInput.value);
-            return [2 /*return*/];
+            switch (_a.label) {
+                case 0:
+                    nameInput = document.getElementById('name');
+                    pwInput = document.getElementById('password');
+                    if (!(nameInput.value !== "" && pwInput.value !== "")) return [3 /*break*/, 2];
+                    console.log(nameInput.value, pwInput.value);
+                    return [4 /*yield*/, fetch("http://localhost:3000/htl/dating/".concat(nameInput.value, "/").concat(pwInput.value), {})
+                            .then(function (response) { return response.json(); })
+                            .then(function (data) {
+                            console.log(data);
+                            displayUser(data);
+                        })];
+                case 1:
+                    _a.sent();
+                    return [3 /*break*/, 3];
+                case 2:
+                    userDiv = document.getElementById("user");
+                    userDiv.innerHTML = "Benutzername oder Passwort falsch";
+                    _a.label = 3;
+                case 3: return [2 /*return*/];
+            }
         });
     });
 }
 function displayUser(user) {
-    console.log(user);
+    var userDiv = document.getElementById("user");
+    userDiv.innerHTML = user.name + user.age + user.description;
 }
