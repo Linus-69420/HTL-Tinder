@@ -14,7 +14,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
             if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
             if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
@@ -56,57 +56,80 @@ function createList(users, name) {
     var usersFound = false;
     var searchResults = document.getElementById("search-results");
     searchResults.innerHTML = "";
-    var ul = document.createElement("ul");
-    if (users.length > 0 && name != "") {
+    console.log(name);
+    if (name === "all") {
+        usersFound = true;
         users.forEach(function (u) {
-            var _a;
+            var div1 = document.createElement("div");
+            div1.className = "ProfileItem";
+            var div2 = document.createElement("div");
+            div2.className = "ProfileImg";
+            var div3 = document.createElement("div");
+            div3.className = "imageContain";
+            var img = document.createElement("img");
+            img.src = "../img/users/".concat(u.name.toLocaleLowerCase(), ".jpg");
+            var div4 = document.createElement("div");
+            div4.className = "ProfileDes";
+            var a = document.createElement("a");
+            a.className = "profileTitle";
+            a.textContent = u.name;
+            var div5 = document.createElement("div");
+            div5.className = "profileInfo";
+            div5.textContent = "Alter: " + u.age;
+            var div6 = document.createElement("div");
+            div6.className = "profileInfo";
+            div6.textContent = "E-Mail: " + u.email;
+            var div7 = document.createElement("div");
+            div7.className = "profileInfo";
+            div7.textContent = "Gender: " + u.gender;
+            var div8 = document.createElement("div");
+            div8.className = "profileInfo";
+            div8.textContent = "Beschreibung: " + u.description;
+            var br = document.createElement("br");
+            div3.appendChild(img);
+            div2.appendChild(div3);
+            div4.append(a, div5, div6, div7, div8);
+            div1.append(div2, div4);
+            searchResults.append(br, div1, br);
+        });
+    }
+    if (users.length > 0 && name != "" && name !== "all") {
+        users.forEach(function (u) {
             if (u.name.toLocaleLowerCase().includes(name.toLocaleLowerCase())) {
                 usersFound = true;
-                console.log(u);
-                var li = document.createElement("li");
-                li.textContent = u.name;
-                var p = document.createElement("p");
-                p.textContent = u.age.toString();
-                li.appendChild(p);
-                p = document.createElement("p");
-                p.textContent = u.gender;
-                li.appendChild(p);
-                p = document.createElement("p");
-                p.textContent = u.email;
-                li.appendChild(p);
-                p = document.createElement("p");
-                p.textContent = u.description;
-                li.appendChild(p);
-                if (u.hasOwnProperty('imgPath')) {
-                    var pic = document.createElement("img");
-                    pic.setAttribute("src", (_a = u.imgPath) === null || _a === void 0 ? void 0 : _a.toString());
-                    li.appendChild(pic);
-                }
-                ul.appendChild(li);
+                var div1 = document.createElement("div");
+                div1.className = "ProfileItem";
+                var div2 = document.createElement("div");
+                div2.className = "ProfileImg";
+                var div3 = document.createElement("div");
+                div3.className = "imageContain";
+                var img = document.createElement("img");
+                img.src = "../img/users/".concat(u.name.toLocaleLowerCase(), ".jpg");
+                var div4 = document.createElement("div");
+                div4.className = "ProfileDes";
+                var a = document.createElement("a");
+                a.className = "profileTitle";
+                a.textContent = u.name;
+                var div5 = document.createElement("div");
+                div5.className = "profileInfo";
+                div5.textContent = "Alter: " + u.age;
+                var div6 = document.createElement("div");
+                div6.className = "profileInfo";
+                div6.textContent = "E-Mail: " + u.email;
+                var div7 = document.createElement("div");
+                div7.className = "profileInfo";
+                div7.textContent = "Gender: " + u.gender;
+                var div8 = document.createElement("div");
+                div8.className = "profileInfo";
+                div8.textContent = "Beschreibung: " + u.description;
+                var br = document.createElement("br");
+                div3.appendChild(img);
+                div2.appendChild(div3);
+                div4.append(a, div5, div6, div7, div8);
+                div1.append(div2, div4);
+                searchResults.append(br, div1, br);
             }
         });
-        searchResults.appendChild(ul);
-        var div1 = document.createElement("div");
-        div1.className = "ProfileItem";
-        div1.textContent = "Hallo";
-        var div2 = document.createElement("div");
-        div2.className = "ProfileImg";
-        var div3 = document.createElement("div");
-        div3.className = "imageContain";
-        var img = document.createElement("img");
-        img.src = "https://placehold.it/200x200";
-        div3.appendChild(img);
-        div2.appendChild(div3);
-        var div4 = document.createElement("div");
-        div4.className = "ProfileDes";
-        var a = document.createElement("a");
-        a.className = "profileTitle";
-        a.textContent = "Username";
-        var div5 = document.createElement("div");
-        div5.className = "profileInfo";
-        div4.append(a, div5);
-        div1.appendChild(div2);
-        searchResults.appendChild(div1);
     }
     if (!usersFound) {
         searchResults.innerHTML = "";

@@ -11,7 +11,7 @@
     },
     {
         "id": 2,
-        "name": "Oliver nur in bessa",
+        "name": "Oliver",
         "password": "123",
         "age": 79,
         "gender": "kampfhelikopter",
@@ -131,7 +131,7 @@
     },
     {
         "id": 23,
-        "name": "Bertl",
+        "name": "Balint",
         "password": "123",
         "age": 18,
         "gender": "male",
