@@ -60,74 +60,14 @@ function createList(users, name) {
     if (name === "all") {
         usersFound = true;
         users.forEach(function (u) {
-            var div1 = document.createElement("div");
-            div1.className = "ProfileItem";
-            var div2 = document.createElement("div");
-            div2.className = "ProfileImg";
-            var div3 = document.createElement("div");
-            div3.className = "imageContain";
-            var img = document.createElement("img");
-            img.src = "../img/users/".concat(u.name.toLocaleLowerCase(), ".jpg");
-            var div4 = document.createElement("div");
-            div4.className = "ProfileDes";
-            var a = document.createElement("a");
-            a.className = "profileTitle";
-            a.textContent = u.name;
-            var div5 = document.createElement("div");
-            div5.className = "profileInfo";
-            div5.textContent = "Alter: " + u.age;
-            var div6 = document.createElement("div");
-            div6.className = "profileInfo";
-            div6.textContent = "E-Mail: " + u.email;
-            var div7 = document.createElement("div");
-            div7.className = "profileInfo";
-            div7.textContent = "Gender: " + u.gender;
-            var div8 = document.createElement("div");
-            div8.className = "profileInfo";
-            div8.textContent = "Beschreibung: " + u.description;
-            var br = document.createElement("br");
-            div3.appendChild(img);
-            div2.appendChild(div3);
-            div4.append(a, div5, div6, div7, div8);
-            div1.append(div2, div4);
-            searchResults.append(br, div1, br);
+            showUsers(u, searchResults);
         });
     }
     if (users.length > 0 && name != "" && name !== "all") {
         users.forEach(function (u) {
             if (u.name.toLocaleLowerCase().includes(name.toLocaleLowerCase())) {
                 usersFound = true;
-                var div1 = document.createElement("div");
-                div1.className = "ProfileItem";
-                var div2 = document.createElement("div");
-                div2.className = "ProfileImg";
-                var div3 = document.createElement("div");
-                div3.className = "imageContain";
-                var img = document.createElement("img");
-                img.src = "../img/users/".concat(u.name.toLocaleLowerCase(), ".jpg");
-                var div4 = document.createElement("div");
-                div4.className = "ProfileDes";
-                var a = document.createElement("a");
-                a.className = "profileTitle";
-                a.textContent = u.name;
-                var div5 = document.createElement("div");
-                div5.className = "profileInfo";
-                div5.textContent = "Alter: " + u.age;
-                var div6 = document.createElement("div");
-                div6.className = "profileInfo";
-                div6.textContent = "E-Mail: " + u.email;
-                var div7 = document.createElement("div");
-                div7.className = "profileInfo";
-                div7.textContent = "Gender: " + u.gender;
-                var div8 = document.createElement("div");
-                div8.className = "profileInfo";
-                div8.textContent = "Beschreibung: " + u.description;
-                var br = document.createElement("br");
-                div3.appendChild(img);
-                div2.appendChild(div3);
-                div4.append(a, div5, div6, div7, div8);
-                div1.append(div2, div4);
-                searchResults.append(br, div1, br);
+                showUsers(u, searchResults);
             }
         });
     }
@@ -137,4 +77,37 @@ function createList(users, name) {
         p.textContent = "Keine Benutzer gefunden.";
         searchResults.appendChild(p);
     }
+}
+function showUsers(u, searchResults) {
+    var div1 = document.createElement("div");
+    div1.className = "ProfileItem";
+    var div2 = document.createElement("div");
+    div2.className = "ProfileImg";
+    var div3 = document.createElement("div");
+    div3.className = "imageContain";
+    var img = document.createElement("img");
+    img.setAttribute("src", u.imgPath);
+    var div4 = document.createElement("div");
+    div4.className = "ProfileDes";
+    var a = document.createElement("a");
+    a.className = "profileTitle";
+    a.textContent = u.name;
+    var div5 = document.createElement("div");
+    div5.className = "profileInfo";
+    div5.textContent = "Alter: " + u.age;
+    var div6 = document.createElement("div");
+    div6.className = "profileInfo";
+    div6.textContent = "E-Mail: " + u.email;
+    var div7 = document.createElement("div");
+    div7.className = "profileInfo";
+    div7.textContent = u.gender;
+    var div8 = document.createElement("div");
+    div8.className = "profileInfo";
+    div8.textContent = "Beschreibung: " + u.description;
+    var br = document.createElement("br");
+    div3.appendChild(img);
+    div2.appendChild(div3);
+    div4.append(a, div5, div6, div7, div8);
+    div1.append(div2, div4);
+    searchResults.append(br, div1, br);
 }
