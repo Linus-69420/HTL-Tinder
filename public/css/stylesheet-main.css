@@ -326,3 +326,7 @@ img {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.noDisplay{
+  display: none;
+}

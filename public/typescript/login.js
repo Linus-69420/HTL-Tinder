@@ -36,6 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
+var currentUser;
 function getUser() {
     return __awaiter(this, void 0, void 0, function () {
         var nameInput, pwInput, userDiv;
@@ -64,7 +65,66 @@ function getUser() {
         });
     });
 }
-function displayUser(user) {
-    var userDiv = document.getElementById("user");
-    userDiv.innerHTML = user.name + user.age + user.description;
+function displayUser(u) {
+    currentUser = u;
+    var login = document.getElementById("login");
+    login.classList.toggle("noDisplay");
+    var container = document.getElementById("user");
+    container.innerHTML = "";
+    var div1 = document.createElement("div");
+    div1.className = "ProfileItem";
+    var div2 = document.createElement("div");
+    div2.className = "ProfileImg";
+    var div3 = document.createElement("div");
+    div3.className = "imageContain";
+    var img = document.createElement("img");
+    img.setAttribute("src", u.imgPath);
+    var div4 = document.createElement("div");
+    div4.className = "ProfileDes";
+    var a = document.createElement("a");
+    a.className = "profileTitle";
+    a.textContent = u.name;
+    var div5 = document.createElement("div");
+    div5.className = "profileInfo";
+    div5.textContent = "Alter: " + u.age;
+    var div6 = document.createElement("div");
+    div6.className = "profileInfo";
+    div6.textContent = "E-Mail: " + u.email;
+    var div7 = document.createElement("div");
+    div7.className = "profileInfo";
+    div7.textContent = u.gender;
+    var div8 = document.createElement("div");
+    div8.className = "profileInfo";
+    div8.textContent = "Beschreibung: " + u.description;
+    var br = document.createElement("br");
+    var deleteBtn = document.createElement("button");
+    deleteBtn.setAttribute("type", "button");
+    deleteBtn.setAttribute("onclick", "deleteUser()");
+    deleteBtn.innerHTML = "Delete";
+    div3.appendChild(img);
+    div2.appendChild(div3);
+    div4.append(a, div5, div6, div7, div8);
+    div1.append(div2, div4);
+    container.append(br, div1, br);
+    container.appendChild(deleteBtn);
+}
+function deleteUser() {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            fetch('http://localhost:3000/htl/dating/' + currentUser.id, {
+                method: 'DELETE'
+            })
+                .then(function (res) { res.json(); });
+            setTimeout(function () { return refreshPage(); }, 1000);
+            return [2 /*return*/];
+        });
+    });
+}
+function refreshPage() {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            window.location.reload();
+            return [2 /*return*/];
+        });
+    });
 }
