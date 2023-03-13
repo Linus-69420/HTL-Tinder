@@ -155,7 +155,7 @@ input[type="text"] {
   flex-grow: 1;
 }
 
-button[type="submit"] {
+button[type="reset"] {
   background-color: #333;
   color: #fff;
   border: none;
@@ -165,8 +165,22 @@ button[type="submit"] {
   cursor: pointer;
 }
 
-button[type="submit"]:hover {
+button[type="reset"]:hover {
   background-color: #555;
+}
+
+button[type="button"] {
+  background-color: #ff0088;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="button"]:hover {
+  background-color: #74003e;
 }
 
 .user-list {
@@ -245,4 +259,62 @@ input[type="password"].error {
   margin-top: 0.5em;
 }
 
+img {
+  margin-bottom: 10px;
+  height: 50%;
+  width: 50%;
+}
 
+/* User Container */
+.ProfileItem {
+  box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  position: relative;
+}
+.ProfileImg {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  bottom: 10px;
+  width: 35%;
+  display: inline-block;
+  overflow: hidden;
+}
+.ProfileDes {
+  padding: 5px 18px 0px 10px !important;
+  position: relative;
+  right: 35%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  display: inline-block;
+  width: 65%;
+}
+.imageContain {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: white;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.imageContain img {
+  width: 100%;
+}
+.profileTitle {
+  color: #5a5a5a;
+  font-weight: bold;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.profileInfo {
+  color: #5a5a5a;
+  font-size: 12px;
+  font-weight: normal;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
