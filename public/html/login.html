@@ -26,6 +26,22 @@
           <label >Password:</label>
           <input type="password" id="password">
           <button type="button" onclick="getUser()" id="submit">Login</button>
+          <script>
+            var input = document.getElementById("name");
+            input.addEventListener("keypress", function(event) {
+              if (event.key === "Enter") {
+                event.preventDefault();
+                document.getElementById("submit").click();
+              }
+            });
+            var input = document.getElementById("password");
+            input.addEventListener("keypress", function(event) {
+              if (event.key === "Enter") {
+                event.preventDefault();
+                document.getElementById("submit").click();
+              }
+            });
+            </script>  
         </form>
     </section>
     <div class="container" id="user">
