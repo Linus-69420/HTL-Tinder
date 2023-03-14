@@ -31,7 +31,7 @@ userRouter
     const password : string = request.body.password;
     const age : number = Number(request.body.age);
     const gender : string = request.body.gender;
-    const description : string = request.body.gender;
+    const description : string = request.body.description;
     const email : string = request.body.email;
     const imgPath = request.body.imgPath;
 
