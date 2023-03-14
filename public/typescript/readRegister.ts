@@ -6,8 +6,8 @@ async function createUser() {
   const pwInput: HTMLInputElement = document.getElementById('password') as HTMLInputElement;
   const ageInput: HTMLInputElement = document.getElementById('age') as HTMLInputElement;
   const genderInput: HTMLSelectElement = document.getElementById('gender') as HTMLSelectElement;
-  const img: HTMLInputElement = document.getElementById('pic') as HTMLInputElement;
-
+  //const img: HTMLInputElement = document.getElementById('pic') as HTMLInputElement;
+  
   const newUser: IUser = {
     name: nameInput.value,
     email: emailInput.value,
@@ -15,7 +15,7 @@ async function createUser() {
     age: parseInt(ageInput.value),
     gender: genderInput.value,
     description: `Ich bin ${nameInput.value} und bin ${ageInput.value} Jahre alt.`,
-    imgPath: img.value
+    imgPath: `../img/users/${nameInput}.jpg`
   };
 
 

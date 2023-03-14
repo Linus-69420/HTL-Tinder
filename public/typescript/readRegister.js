@@ -14,7 +14,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+        while (_) try {
             if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
             if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
@@ -38,7 +38,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 exports.__esModule = true;
 function createUser() {
     return __awaiter(this, void 0, void 0, function () {
-        var nameInput, emailInput, pwInput, ageInput, genderInput, img, newUser;
+        var nameInput, emailInput, pwInput, ageInput, genderInput, newUser;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -47,7 +47,6 @@ function createUser() {
                     pwInput = document.getElementById('password');
                     ageInput = document.getElementById('age');
                     genderInput = document.getElementById('gender');
-                    img = document.getElementById('pic');
                     newUser = {
                         name: nameInput.value,
                         email: emailInput.value,
@@ -55,7 +54,7 @@ function createUser() {
                         age: parseInt(ageInput.value),
                         gender: genderInput.value,
                         description: "Ich bin ".concat(nameInput.value, " und bin ").concat(ageInput.value, " Jahre alt."),
-                        imgPath: img.value
+                        imgPath: "../img/users/".concat(nameInput, ".jpg")
                     };
                     console.log(newUser);
                     return [4 /*yield*/, fetch("http://localhost:3000/htl/dating/", {
