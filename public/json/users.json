@@ -26,7 +26,7 @@
         "age": 17,
         "gender": "männlich",
         "email": "sukii@htl.at",
-        "description": "Gönner",
+        "description": "mache eher wenig bei dem projekt",
         "imgPath": "../img/users/sukii.jpg"
     },
     {
@@ -178,5 +178,15 @@
         "email": "erok@gmail.com",
         "description": "Hallo, ich bin erik seifried und bin 12 Jahre alt. Ich spiele gerne fußball und hätte gern jemanden, der auch mit meinen bällen spielt.",
         "imgPath": "https://cdn.discordapp.com/attachments/761271403554013194/1085162504319143936/20230314_122753_resized.jpg"
+    },
+    {
+        "id": 29,
+        "name": "sus",
+        "password": "123",
+        "age": 69,
+        "gender": "männlich",
+        "email": "sus@htl.com",
+        "description": "sussyamongus69420",
+        "imgPath": "https://cdn.pixabay.com/photo/2021/02/12/13/43/among-us-6008615__340.png"
     }
 ]
