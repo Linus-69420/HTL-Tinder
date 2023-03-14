@@ -14,7 +14,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+        while (_) try {
             if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
             if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
@@ -98,15 +98,91 @@ function displayUser(u) {
     div8.textContent = "Beschreibung: " + u.description;
     var br = document.createElement("br");
     var deleteBtn = document.createElement("button");
+    deleteBtn.setAttribute("id", "delete");
     deleteBtn.setAttribute("type", "button");
     deleteBtn.setAttribute("onclick", "deleteUser()");
     deleteBtn.innerHTML = "Delete";
+    var editBtn = document.createElement("button");
+    editBtn.setAttribute("id", "edit");
+    editBtn.setAttribute("type", "button");
+    editBtn.setAttribute("onclick", "editUser()");
+    editBtn.setAttribute("style", "float: left");
+    editBtn.innerHTML = "Edit";
     div3.appendChild(img);
     div2.appendChild(div3);
     div4.append(a, div5, div6, div7, div8);
     div1.append(div2, div4);
     container.append(br, div1, br);
+    container.appendChild(editBtn);
     container.appendChild(deleteBtn);
+}
+function editUser() {
+    var sectionEdit = document.createElement("section");
+    sectionEdit.setAttribute("class", "register");
+    sectionEdit.setAttribute("id", "edit");
+    var header = document.createElement("h1");
+    header.textContent = "Edit";
+    var form = document.createElement("form");
+    var nameLabel = document.createElement("label");
+    nameLabel.innerHTML = "Name";
+    nameLabel.setAttribute("for", "name");
+    var nameInput = document.createElement("input");
+    nameInput.setAttribute("type", "text");
+    nameInput.setAttribute("id", "name");
+    nameInput.setAttribute("name", "name");
+    nameInput.setAttribute("placeholder", currentUser.name);
+    var emailLabel = document.createElement("label");
+    emailLabel.innerHTML = "Email";
+    emailLabel.setAttribute("for", "email");
+    var emailInput = document.createElement("input");
+    emailInput.setAttribute("type", "email");
+    emailInput.setAttribute("id", "email");
+    emailInput.setAttribute("name", "email");
+    emailInput.setAttribute("placeholder", currentUser.email);
+    var passworLabel = document.createElement("label");
+    passworLabel.innerHTML = "Password";
+    passworLabel.setAttribute("for", "password");
+    var passwordInput = document.createElement("input");
+    passwordInput.setAttribute("type", "password");
+    passwordInput.setAttribute("id", "password");
+    passwordInput.setAttribute("name", "password");
+    passwordInput.setAttribute("placeholder", currentUser.password);
+    var ageLabel = document.createElement("label");
+    ageLabel.innerHTML = "Alter";
+    ageLabel.setAttribute("for", "age");
+    var ageInput = document.createElement("input");
+    ageInput.setAttribute("type", "age");
+    ageInput.setAttribute("id", "age");
+    ageInput.setAttribute("name", "age");
+    ageInput.setAttribute("placeholder", currentUser.age.toString());
+    var genderLabel = document.createElement("label");
+    genderLabel.innerHTML = "Geschlecht";
+    genderLabel.setAttribute("for", "gender");
+    var genderSelecttion = document.createElement("select");
+    genderSelecttion.setAttribute("type", "gender");
+    genderSelecttion.setAttribute("id", "gender");
+    genderSelecttion.setAttribute("name", "gender");
+    genderSelecttion.setAttribute("placeholder", currentUser.gender);
+    var genderOption1 = document.createElement("option");
+    genderOption1.setAttribute("value", "männlich");
+    genderOption1.innerHTML = "männlich";
+    var genderOption2 = document.createElement("option");
+    genderOption2.setAttribute("value", "weiblich");
+    genderOption2.innerHTML = "weiblich";
+    var genderOption3 = document.createElement("option");
+    genderOption3.setAttribute("value", "divers");
+    genderOption3.innerHTML = "divers";
+    genderSelecttion.append(genderOption1, genderOption2, genderOption3);
+    form.append(nameLabel, nameInput, passworLabel, passwordInput, ageLabel, ageInput, emailLabel, emailInput, genderLabel, genderSelecttion);
+    var editSubmitBtn = document.createElement("button");
+    editSubmitBtn.setAttribute("id", "delete");
+    editSubmitBtn.setAttribute("type", "button");
+    editSubmitBtn.setAttribute("onclick", "putUser()");
+    editSubmitBtn.innerHTML = "Submit";
+    sectionEdit.append(header, form);
+    var container = document.getElementById("user");
+    container.appendChild(sectionEdit);
+    container.appendChild(editSubmitBtn);
 }
 function deleteUser() {
     return __awaiter(this, void 0, void 0, function () {
@@ -116,6 +192,25 @@ function deleteUser() {
             })
                 .then(function (res) { res.json(); });
             setTimeout(function () { return refreshPage(); }, 1000);
+            return [2 /*return*/];
+        });
+    });
+}
+function putUser() {
+    return __awaiter(this, void 0, void 0, function () {
+        var nameInput, emailInput, pwInput, ageInput, genderInput;
+        return __generator(this, function (_a) {
+            nameInput = document.getElementById('name');
+            emailInput = document.getElementById('email');
+            pwInput = document.getElementById('password');
+            ageInput = document.getElementById('age');
+            genderInput = document.getElementById('gender');
+            currentUser.name = nameInput.value;
+            currentUser.email = emailInput.value;
+            currentUser.password = pwInput.value;
+            currentUser.age = Number(ageInput.value);
+            currentUser.gender = genderInput.value;
+            console.log(nameInput.value, emailInput.value);
             return [2 /*return*/];
         });
     });
