@@ -46,11 +46,9 @@ function getUser() {
                     nameInput = document.getElementById('name');
                     pwInput = document.getElementById('password');
                     if (!(nameInput.value !== "" && pwInput.value !== "")) return [3 /*break*/, 2];
-                    console.log(nameInput.value, pwInput.value);
                     return [4 /*yield*/, fetch("http://localhost:3000/htl/dating/".concat(nameInput.value, "/").concat(pwInput.value), {})
                             .then(function (response) { return response.json(); })
                             .then(function (data) {
-                            console.log(data);
                             displayUser(data);
                         })];
                 case 1:
@@ -106,7 +104,7 @@ function displayUser(u) {
     editBtn.setAttribute("id", "edit");
     editBtn.setAttribute("type", "button");
     editBtn.setAttribute("onclick", "editUser()");
-    editBtn.setAttribute("style", "float: left");
+    editBtn.setAttribute("style", "float: right");
     editBtn.innerHTML = "Edit";
     div3.appendChild(img);
     div2.appendChild(div3);
@@ -130,7 +128,8 @@ function editUser() {
     nameInput.setAttribute("type", "text");
     nameInput.setAttribute("id", "name");
     nameInput.setAttribute("name", "name");
-    nameInput.setAttribute("placeholder", currentUser.name);
+    nameInput.setAttribute("value", currentUser.name);
+    nameInput.value = currentUser.name;
     var emailLabel = document.createElement("label");
     emailLabel.innerHTML = "Email";
     emailLabel.setAttribute("for", "email");
@@ -138,7 +137,7 @@ function editUser() {
     emailInput.setAttribute("type", "email");
     emailInput.setAttribute("id", "email");
     emailInput.setAttribute("name", "email");
-    emailInput.setAttribute("placeholder", currentUser.email);
+    emailInput.setAttribute("value", currentUser.email);
     var passworLabel = document.createElement("label");
     passworLabel.innerHTML = "Password";
     passworLabel.setAttribute("for", "password");
@@ -146,7 +145,15 @@ function editUser() {
     passwordInput.setAttribute("type", "password");
     passwordInput.setAttribute("id", "password");
     passwordInput.setAttribute("name", "password");
-    passwordInput.setAttribute("placeholder", currentUser.password);
+    passwordInput.value = currentUser.password;
+    var descriptionLabel = document.createElement("label");
+    descriptionLabel.innerHTML = "Beschreibung";
+    descriptionLabel.setAttribute("for", "description");
+    var descriptionInput = document.createElement("input");
+    descriptionInput.setAttribute("type", "text");
+    descriptionInput.setAttribute("id", "description");
+    descriptionInput.setAttribute("name", "description");
+    descriptionInput.setAttribute("value", currentUser.description);
     var ageLabel = document.createElement("label");
     ageLabel.innerHTML = "Alter";
     ageLabel.setAttribute("for", "age");
@@ -154,7 +161,7 @@ function editUser() {
     ageInput.setAttribute("type", "age");
     ageInput.setAttribute("id", "age");
     ageInput.setAttribute("name", "age");
-    ageInput.setAttribute("placeholder", currentUser.age.toString());
+    ageInput.setAttribute("value", currentUser.age.toString());
     var genderLabel = document.createElement("label");
     genderLabel.innerHTML = "Geschlecht";
     genderLabel.setAttribute("for", "gender");
@@ -162,7 +169,7 @@ function editUser() {
     genderSelecttion.setAttribute("type", "gender");
     genderSelecttion.setAttribute("id", "gender");
     genderSelecttion.setAttribute("name", "gender");
-    genderSelecttion.setAttribute("placeholder", currentUser.gender);
+    genderSelecttion.setAttribute("value", currentUser.gender);
     var genderOption1 = document.createElement("option");
     genderOption1.setAttribute("value", "männlich");
     genderOption1.innerHTML = "männlich";
@@ -173,16 +180,16 @@ function editUser() {
     genderOption3.setAttribute("value", "divers");
     genderOption3.innerHTML = "divers";
     genderSelecttion.append(genderOption1, genderOption2, genderOption3);
-    form.append(nameLabel, nameInput, passworLabel, passwordInput, ageLabel, ageInput, emailLabel, emailInput, genderLabel, genderSelecttion);
+    form.append(nameLabel, nameInput, passworLabel, passwordInput, descriptionLabel, descriptionInput, ageLabel, ageInput, emailLabel, emailInput, genderLabel, genderSelecttion);
     var editSubmitBtn = document.createElement("button");
     editSubmitBtn.setAttribute("id", "delete");
     editSubmitBtn.setAttribute("type", "button");
     editSubmitBtn.setAttribute("onclick", "putUser()");
     editSubmitBtn.innerHTML = "Submit";
     sectionEdit.append(header, form);
+    form.appendChild(editSubmitBtn);
     var container = document.getElementById("user");
     container.appendChild(sectionEdit);
-    container.appendChild(editSubmitBtn);
 }
 function deleteUser() {
     return __awaiter(this, void 0, void 0, function () {
@@ -198,20 +205,40 @@ function deleteUser() {
 }
 function putUser() {
     return __awaiter(this, void 0, void 0, function () {
-        var nameInput, emailInput, pwInput, ageInput, genderInput;
+        var nameInput, emailInput, descriptionInput, pwInput, ageInput, genderInput;
         return __generator(this, function (_a) {
-            nameInput = document.getElementById('name');
-            emailInput = document.getElementById('email');
-            pwInput = document.getElementById('password');
-            ageInput = document.getElementById('age');
-            genderInput = document.getElementById('gender');
-            currentUser.name = nameInput.value;
-            currentUser.email = emailInput.value;
-            currentUser.password = pwInput.value;
-            currentUser.age = Number(ageInput.value);
-            currentUser.gender = genderInput.value;
-            console.log(nameInput.value, emailInput.value);
-            return [2 /*return*/];
+            switch (_a.label) {
+                case 0:
+                    nameInput = document.getElementById('name');
+                    emailInput = document.getElementById('email');
+                    descriptionInput = document.getElementById("description");
+                    pwInput = document.getElementById('password');
+                    ageInput = document.getElementById('age');
+                    genderInput = document.getElementById('gender');
+                    currentUser.name = nameInput.value;
+                    currentUser.email = emailInput.value;
+                    currentUser.password = pwInput.value;
+                    currentUser.age = Number(ageInput.value);
+                    currentUser.gender = genderInput.value;
+                    currentUser.description = descriptionInput.value;
+                    console.log(currentUser);
+                    return [4 /*yield*/, fetch("http://localhost:3000/htl/dating/" + currentUser.id, {
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                            },
+                            method: "PUT",
+                            body: JSON.stringify(currentUser)
+                        })
+                            .then(function (response) { return response.json(); })
+                            .then(function (data) {
+                            console.log(data);
+                        })];
+                case 1:
+                    _a.sent();
+                    setTimeout(function () { return refreshPage(); }, 1000);
+                    return [2 /*return*/];
+            }
         });
     });
 }

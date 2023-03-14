@@ -8,11 +8,9 @@ async function getUser() {
     const pwInput: HTMLInputElement = document.getElementById('password') as HTMLInputElement;
 
     if (nameInput.value !== "" && pwInput.value !== "") {
-        console.log(nameInput.value, pwInput.value);
         await fetch(`http://localhost:3000/htl/dating/${nameInput.value}/${pwInput.value}`, {})
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
                 displayUser(data);
             });
     }
@@ -67,7 +65,7 @@ function displayUser(u: IUser) {
     editBtn.setAttribute("id", "edit");
     editBtn.setAttribute("type", "button");
     editBtn.setAttribute("onclick", "editUser()");
-    editBtn.setAttribute("style", "float: left");
+    editBtn.setAttribute("style", "float: right");
     editBtn.innerHTML = "Edit";
 
     div3.appendChild(img);
@@ -96,7 +94,8 @@ function editUser() {
     nameInput.setAttribute("type", "text");
     nameInput.setAttribute("id", "name");
     nameInput.setAttribute("name", "name");
-    nameInput.setAttribute("placeholder", currentUser.name);
+    nameInput.setAttribute("value", currentUser.name);
+    nameInput.value = currentUser.name;
 
     const emailLabel = document.createElement("label");
     emailLabel.innerHTML = "Email";
@@ -105,7 +104,7 @@ function editUser() {
     emailInput.setAttribute("type", "email");
     emailInput.setAttribute("id", "email");
     emailInput.setAttribute("name", "email");
-    emailInput.setAttribute("placeholder", currentUser.email);
+    emailInput.setAttribute("value", currentUser.email);
 
     const passworLabel = document.createElement("label");
     passworLabel.innerHTML = "Password";
@@ -114,7 +113,16 @@ function editUser() {
     passwordInput.setAttribute("type", "password");
     passwordInput.setAttribute("id", "password");
     passwordInput.setAttribute("name", "password");
-    passwordInput.setAttribute("placeholder", currentUser.password);
+    passwordInput.value = currentUser.password;
+
+    const descriptionLabel = document.createElement("label");
+    descriptionLabel.innerHTML = "Beschreibung";
+    descriptionLabel.setAttribute("for", "description");
+    const descriptionInput = document.createElement("input");
+    descriptionInput.setAttribute("type", "text");
+    descriptionInput.setAttribute("id", "description");
+    descriptionInput.setAttribute("name", "description");
+    descriptionInput.setAttribute("value", currentUser.description);
 
     const ageLabel = document.createElement("label");
     ageLabel.innerHTML = "Alter";
@@ -123,7 +131,7 @@ function editUser() {
     ageInput.setAttribute("type", "age");
     ageInput.setAttribute("id", "age");
     ageInput.setAttribute("name", "age");
-    ageInput.setAttribute("placeholder", currentUser.age.toString());
+    ageInput.setAttribute("value", currentUser.age.toString());
 
     const genderLabel = document.createElement("label");
     genderLabel.innerHTML = "Geschlecht";
@@ -132,7 +140,7 @@ function editUser() {
     genderSelecttion.setAttribute("type", "gender");
     genderSelecttion.setAttribute("id", "gender");
     genderSelecttion.setAttribute("name", "gender");
-    genderSelecttion.setAttribute("placeholder", currentUser.gender);
+    genderSelecttion.setAttribute("value", currentUser.gender);
 
     const genderOption1 = document.createElement("option");
     genderOption1.setAttribute("value", "männlich");
@@ -152,6 +160,8 @@ function editUser() {
         nameInput,
         passworLabel,
         passwordInput,
+        descriptionLabel,
+        descriptionInput,
         ageLabel,
         ageInput,
         emailLabel,
@@ -167,10 +177,10 @@ function editUser() {
     editSubmitBtn.innerHTML = "Submit";
 
     sectionEdit.append(header, form);
+    form.appendChild(editSubmitBtn);
 
     const container = document.getElementById("user")!;
     container.appendChild(sectionEdit);
-    container.appendChild(editSubmitBtn);
 }
 
 async function deleteUser() {
@@ -185,19 +195,21 @@ async function deleteUser() {
 async function putUser() {
     const nameInput: HTMLInputElement = document.getElementById('name') as HTMLInputElement;
     const emailInput: HTMLInputElement = document.getElementById('email') as HTMLInputElement;
+    const descriptionInput: HTMLInputElement = document.getElementById("description") as HTMLInputElement;
     const pwInput: HTMLInputElement = document.getElementById('password') as HTMLInputElement;
     const ageInput: HTMLInputElement = document.getElementById('age') as HTMLInputElement;
     const genderInput: HTMLSelectElement = document.getElementById('gender') as HTMLSelectElement;
-  
+
     currentUser.name = nameInput.value;
     currentUser.email = emailInput.value;
     currentUser.password = pwInput.value;
     currentUser.age = Number(ageInput.value);
     currentUser.gender = genderInput.value;
+    currentUser.description = descriptionInput.value;
 
-    console.log(nameInput.value, emailInput.value);
+    console.log(currentUser);
 
-    /*await fetch(`http://localhost:3000/htl/dating/` + currentUser.id, {
+    await fetch(`http://localhost:3000/htl/dating/` + currentUser.id, {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -209,7 +221,7 @@ async function putUser() {
         .then((data) => {
             console.log(data);
         });
-    setTimeout(() => refreshPage(), 1000);*/
+    setTimeout(() => refreshPage(), 1000);
 }
 
 async function refreshPage() {
