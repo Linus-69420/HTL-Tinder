@@ -53,7 +53,8 @@ function createUser() {
                         password: pwInput.value,
                         age: parseInt(ageInput.value),
                         gender: genderInput.value,
-                        description: "Ich bin ".concat(nameInput.value, " und bin ").concat(ageInput.value, " Jahre alt.")
+                        description: "Ich bin ".concat(nameInput.value, " und bin ").concat(ageInput.value, " Jahre alt."),
+                        imgPath: "../img/users/".concat(nameInput, ".jpg")
                     };
                     console.log(newUser);
                     return [4 /*yield*/, fetch("http://localhost:3000/htl/dating/", {
