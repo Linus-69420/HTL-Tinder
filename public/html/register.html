@@ -40,6 +40,51 @@
                 <label for="pic">Selbstportrait (URL):</label>
                 <input type="text" id="pic" name="pic" accept="image/png, image/gif, image/jpeg">
                 <button type="button" onclick="createUser()" id="button">Jetzt registrieren</button>
+
+                <script>
+                  var input = document.getElementById("name");
+                  input.addEventListener("keypress", function(event) {
+                    if (event.key === "Enter") {
+                      event.preventDefault();
+                      document.getElementById("button").click();
+                    }
+                  });
+                  var input = document.getElementById("email");
+                  input.addEventListener("keypress", function(event) {
+                    if (event.key === "Enter") {
+                      event.preventDefault();
+                      document.getElementById("button").click();
+                    }
+                  });
+                  var input = document.getElementById("password");
+                  input.addEventListener("keypress", function(event) {
+                    if (event.key === "Enter") {
+                      event.preventDefault();
+                      document.getElementById("button").click();
+                    }
+                  });
+                  var input = document.getElementById("description");
+                  input.addEventListener("keypress", function(event) {
+                    if (event.key === "Enter") {
+                      event.preventDefault();
+                      document.getElementById("button").click();
+                    }
+                  });
+                  var input = document.getElementById("pic");
+                  input.addEventListener("keypress", function(event) {
+                    if (event.key === "Enter") {
+                      event.preventDefault();
+                      document.getElementById("button").click();
+                    }
+                  });
+                  var input = document.getElementById("age");
+                  input.addEventListener("keypress", function(event) {
+                    if (event.key === "Enter") {
+                      event.preventDefault();
+                      document.getElementById("button").click();
+                    }
+                  });
+                  </script>  
             </form>
         </section>
     </main>
