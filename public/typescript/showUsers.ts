@@ -15,7 +15,6 @@ function createList(users: IUser[], name) {
   let usersFound: Boolean = false;
   const searchResults = document.getElementById("search-results")!;
   searchResults.innerHTML = "";
-  console.log(name);
 
   if(name === "all")
   {

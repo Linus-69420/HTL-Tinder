@@ -56,7 +56,6 @@ function createList(users, name) {
     var usersFound = false;
     var searchResults = document.getElementById("search-results");
     searchResults.innerHTML = "";
-    console.log(name);
     if (name === "all") {
         usersFound = true;
         users.forEach(function (u) {
